@@ -138,98 +138,97 @@ export function Footer({
             </RevealItem>
           </RevealStagger>
 
-          {/* ── LOGO + TAGLINE ─────────────────────────────── */}
-          <div className="border-gold/15 mt-14 grid grid-cols-1 items-end gap-6 border-t pt-8 sm:grid-cols-2 lg:mt-20">
-            <Link
-              href="/"
-              className="focus-ring inline-flex items-center gap-3 self-start rounded-md"
-              aria-label="Atlantis Financial Inc."
-            >
-              <Image
-                src="/atlantis-logo.png"
-                alt="Atlantis Financial Inc."
-                width={1325}
-                height={433}
-                unoptimized
-                className="block h-9 w-auto sm:h-10"
-              />
-            </Link>
-
-            <div className="text-left sm:text-right">
-              <p className="text-cream-dim font-serif text-sm italic">
-                Scenario-Based Financial Planning · Barrie, Ontario · Virtual
-                &amp; In-Person
-              </p>
-              <p className="text-cream-dim/50 mt-2 text-[11px]">
-                © {new Date().getFullYear()} Atlantis Financial Inc.
-              </p>
-            </div>
-          </div>
-
-          {/* ── COMPLIANCE BAND (Aligned/CIRO/CIPF, required on every page) ── */}
-          <div className="border-gold/15 mt-12 border-t pt-8">
+          {/* ── LOGO, TAGLINE + COMPLIANCE ─────────────────── */}
+          <div className="mt-14 lg:mt-20">
             <div className="bg-cream text-navy-mid rounded-2xl px-5 py-6 sm:px-8 sm:py-7">
-              {/* Logos with linked hyperlinks */}
-              <div className="border-navy/10 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 border-b pb-6 sm:justify-start">
-                <a
-                  href="https://www.alignedcapitalpartners.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Aligned Capital Partners Inc."
-                  className="focus-ring inline-flex transition-opacity hover:opacity-100"
+              <div className="grid grid-cols-1 items-end gap-6 sm:grid-cols-2">
+                <Link
+                  href="/"
+                  className="focus-ring inline-flex items-center gap-3 self-start rounded-md"
+                  aria-label="Atlantis Financial Inc."
                 >
                   <Image
-                    src="/images/compliance/aligned.png"
-                    alt="Aligned Capital Partners Inc."
-                    width={300}
-                    height={80}
-                    className="h-9 w-auto opacity-90 transition-opacity hover:opacity-100"
+                    src="/atlantis-logo.png"
+                    alt="Atlantis Financial Inc."
+                    width={1325}
+                    height={433}
+                    unoptimized
+                    className="block h-9 w-auto sm:h-10"
                   />
-                </a>
-                <div
-                  aria-hidden="true"
-                  className="bg-navy/15 hidden h-7 w-px sm:block"
-                />
-                <a
-                  href="https://www.ciro.ca/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Canadian Investment Regulatory Organization (CIRO)"
-                  className="focus-ring inline-flex transition-opacity hover:opacity-100"
-                >
-                  <Image
-                    src="/images/compliance/ciro.png"
-                    alt="CIRO, Canadian Investment Regulatory Organization"
-                    width={300}
-                    height={80}
-                    className="h-8 w-auto opacity-90 transition-opacity hover:opacity-100"
-                  />
-                </a>
-                <div
-                  aria-hidden="true"
-                  className="bg-navy/15 hidden h-7 w-px sm:block"
-                />
-                <a
-                  href="https://www.cipf.ca/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Canadian Investor Protection Fund (CIPF)"
-                  className="focus-ring inline-flex transition-opacity hover:opacity-100"
-                >
-                  <Image
-                    src="/images/compliance/cipf.png"
-                    alt="Canadian Investor Protection Fund"
-                    width={300}
-                    height={80}
-                    className="h-8 w-auto opacity-90 transition-opacity hover:opacity-100"
-                  />
-                </a>
+                </Link>
+
+                <div className="text-left sm:text-right">
+                  <p className="text-navy-mid/75 font-serif text-sm italic">
+                    Scenario-Based Financial Planning · Barrie, Ontario · Virtual
+                    &amp; In-Person
+                  </p>
+                  <p className="text-navy-mid/50 mt-2 text-[11px]">
+                    © {new Date().getFullYear()} Atlantis Financial Inc.
+                  </p>
+                </div>
               </div>
 
-              {/* Disclaimer text */}
-              <p className="text-navy-mid/70 mt-6 text-[11.5px] leading-relaxed sm:text-xs">
-                <ComplianceDisclaimer variant={variant} />
-              </p>
+              <div className="border-navy/10 mt-8 border-t pt-8">
+                <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-5 border-b border-navy/10 pb-6 sm:justify-start">
+                  <a
+                    href="https://www.alignedcapitalpartners.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Aligned Capital Partners Inc."
+                    className="focus-ring inline-flex transition-opacity hover:opacity-100"
+                  >
+                    <Image
+                      src="/images/compliance/aligned.png"
+                      alt="Aligned Capital Partners Inc."
+                      width={300}
+                      height={80}
+                      className="h-9 w-auto opacity-90 transition-opacity hover:opacity-100"
+                    />
+                  </a>
+                  <div
+                    aria-hidden="true"
+                    className="bg-navy/15 hidden h-7 w-px sm:block"
+                  />
+                  <a
+                    href="https://www.ciro.ca/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Canadian Investment Regulatory Organization (CIRO)"
+                    className="focus-ring inline-flex transition-opacity hover:opacity-100"
+                  >
+                    <Image
+                      src="/images/compliance/ciro.png"
+                      alt="CIRO, Canadian Investment Regulatory Organization"
+                      width={300}
+                      height={80}
+                      className="h-8 w-auto opacity-90 transition-opacity hover:opacity-100"
+                    />
+                  </a>
+                  <div
+                    aria-hidden="true"
+                    className="bg-navy/15 hidden h-7 w-px sm:block"
+                  />
+                  <a
+                    href="https://www.cipf.ca/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Canadian Investor Protection Fund (CIPF)"
+                    className="focus-ring inline-flex transition-opacity hover:opacity-100"
+                  >
+                    <Image
+                      src="/images/compliance/cipf.png"
+                      alt="Canadian Investor Protection Fund"
+                      width={300}
+                      height={80}
+                      className="h-8 w-auto opacity-90 transition-opacity hover:opacity-100"
+                    />
+                  </a>
+                </div>
+
+                <p className="text-navy-mid/70 mt-6 text-[11.5px] leading-relaxed sm:text-xs">
+                  <ComplianceDisclaimer variant={variant} />
+                </p>
+              </div>
             </div>
           </div>
         </div>
