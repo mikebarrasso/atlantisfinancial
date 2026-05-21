@@ -1,25 +1,30 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Wireframe Template",
+  name: "Atlantis Financial Inc.",
   description:
-    "A baseline for products that move quickly. Wireframe-stage scaffolding for teams that ship before the brand lands.",
-  url: "https://example.com",
+    "Scenario-based financial planning for active Canadians at or near retirement. We explore the possibilities with you, in real time, until the picture becomes clear.",
+  url: "https://atlantisfinancial.ca",
   ogImage: "/og-image.png",
-  creator: "@yourhandle",
+  creator: "@atlantisfinancial",
   authors: [
     {
-      name: "Your Name",
-      url: "https://example.com",
+      name: "Allan Norman, CFP, CIM, RWM",
+      url: "https://atlantisfinancial.ca",
     },
   ],
   keywords: [
-    "landing page",
-    "template",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "TypeScript",
+    "scenario-based financial planning",
+    "retirement planning Canada",
+    "CFP Canada",
+    "financial planner Barrie Ontario",
+    "decumulation strategy",
+    "RRSP RRIF withdrawal",
+    "CPP timing",
+    "pension commutation",
+    "fee-for-service planning",
+    "Allan Norman",
+    "Atlantis Financial",
   ],
 } as const;
 

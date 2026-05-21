@@ -4,28 +4,48 @@
  * class on the html element, so next-themes drives the theme. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ── ATLANTIS FINANCIAL · Design tokens ──
+ * Dark theme is the default per Alan's mockup.
+ * Light theme is provided as an alt via the floating toggle.
+ * Brand colors (navy/gold/cream/silver) stay constant across both themes.
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --ring: #0066ff;
-  --card: #fafafa;
-  --card-foreground: #0a0a0a;
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Light theme (alt) */
+  --background: #FDFAF5;        /* white-cream */
+  --foreground: #1B3060;        /* navy text */
+  --muted: #F4EFE4;             /* cream surface */
+  --muted-foreground: #1E3570;  /* navy-mid */
+  --border: rgba(27,48,96,0.18);
+  --ring: #C9A86C;              /* gold focus */
+  --card: #F4EFE4;
+  --card-foreground: #1B3060;
+
+  /* Brand tokens — same in both themes */
+  --navy: #1B3060;
+  --navy-deep: #0F1E3A;
+  --navy-mid: #1E3570;
+  --gold: #C9A86C;
+  --gold-light: #E2C993;
+  --silver: #8C9BB5;
+  --silver-light: #B8C2D4;
+  --cream: #F4EFE4;
+  --cream-dim: #C8BFA8;
+
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --muted: #171717;
-  --muted-foreground: #a3a3a3;
-  --border: #262626;
-  --ring: #3b82f6;
-  --card: #171717;
-  --card-foreground: #fafafa;
+  /* Dark theme (default) */
+  --background: #0F1E3A;        /* navy-deep */
+  --foreground: #F4EFE4;        /* cream text */
+  --muted: #1B3060;             /* navy surface */
+  --muted-foreground: #C8BFA8;  /* cream-dim */
+  --border: rgba(201,168,108,0.22);
+  --ring: #C9A86C;
+  --card: #1B3060;
+  --card-foreground: #F4EFE4;
 }
 
 @theme inline {
@@ -37,29 +57,34 @@
   --color-ring: var(--ring);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-  --color-neutral-950: #0a0a0a;
+
+  /* Brand colors — accessible as bg-navy / text-gold / border-cream-dim etc. */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-mid: var(--navy-mid);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-silver: var(--silver);
+  --color-silver-light: var(--silver-light);
+  --color-cream: var(--cream);
+  --color-cream-dim: var(--cream-dim);
+
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
 html {
-  color-scheme: light;
-  /* Native fallback when SmoothScroll is disabled or reduced motion is on. */
+  /* Follow the user's OS color preference until next-themes resolves. */
+  color-scheme: light dark;
   scroll-behavior: smooth;
 }
 
 html.dark {
   color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: reduce) {

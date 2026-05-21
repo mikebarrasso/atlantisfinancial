@@ -42,7 +42,7 @@ const TESTIMONIALS: ReadonlyArray<Testimonial> = [
     id: "alyssa",
     title: "Shipping the next version",
     subtitle:
-      "Frame let our team move from sketches to a working app on day one — by the time the brand system landed we were already iterating on real flows.",
+      "Frame let our team move from sketches to a working app on day one, by the time the brand system landed we were already iterating on real flows.",
     name: "Alyssa Reed",
     role: "Design Lead, Halftone",
     topic: "Brand-ready scaffold",
@@ -53,7 +53,7 @@ const TESTIMONIALS: ReadonlyArray<Testimonial> = [
     id: "will",
     title: "Keeps up with iteration",
     subtitle:
-      "We tore out maybe a quarter of the components and the rest just stayed — the structure was right enough that nothing got in our way.",
+      "We tore out maybe a quarter of the components and the rest just stayed, the structure was right enough that nothing got in our way.",
     name: "Will Aldridge",
     role: "Engineering, Northbridge",
     topic: "Structure that scales",

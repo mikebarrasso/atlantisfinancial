@@ -2,6 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion, type Transition } from "motion/react";
+import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
 import { SectionCorners } from "@/components/section-corners";
 
@@ -22,45 +23,63 @@ type FAQ = {
 
 const FAQS: ReadonlyArray<FAQ> = [
   {
-    q: "What exactly does Frame give me on day one?",
+    q: "When should I start taking CPP and OAS?",
     a: [
-      "Frame is a wireframe-stage scaffold for product teams. The repo boots a working app with routing, layout primitives, theming, and a set of intentionally generic component placeholders already in place — so the first feature you ship doesn't start from a blank canvas. Brand, content, and product details are meant to be overwritten at your own pace.",
+      "There's no universal right age. Delaying CPP to 70 increases your payment by 42% versus age 65, but it only pays off if you live long enough to collect more in total, which depends on your health, longevity, other income, and whether your spouse has their own CPP. We model your specific situation as a scenario, not a formula, so the timing decision is made with the full picture in view.",
     ],
   },
   {
-    q: "How do I start a project from Frame?",
+    q: "What's the most tax-efficient way to draw down my accounts (RRSP, RRIF, TFSA, non-registered)?",
     a: [
-      "Clone the repo, install with your preferred package manager, and run the dev server. There's no install wizard, no setup script, and no required environment variables for the default routes. Most teams have a working local app within a few minutes.",
+      "The sequencing of RRSP, RRIF, TFSA, and non-registered withdrawals can meaningfully reduce your lifetime tax bill, but the right answer depends on your specific income picture, estate goals, and spousal situation. For most retirees, strategic RRSP drawdowns before RRIF conversion plus careful coordination with OAS clawback thresholds saves meaningful tax over a 25–30 year retirement.",
     ],
   },
   {
-    q: "Is Frame opinionated about my stack?",
+    q: "Can you do a one-time financial plan or review, rather than ongoing management?",
     a: [
-      "Frame uses Next.js, Tailwind, and TypeScript out of the box, but it doesn't introduce custom abstractions on top of them. If your team already uses these tools, the conventions will look familiar. If you migrate off any one of them later, the rest of the scaffold is still useful.",
+      "Yes. Many people need a comprehensive scenario-based planning engagement rather than an ongoing advisory relationship. We can do a thorough review, build your game plan, and let you decide whether ongoing support makes sense after that. There's no pressure to commit to either.",
     ],
   },
   {
-    q: "Can I use Frame for client work?",
+    q: "How do I build a decumulation strategy that minimizes taxes through retirement?",
     a: [
-      "Yes. Frame is licensed for unlimited commercial projects (you just can't resell the template itself), and intentionally easy to strip back to a minimal starting point. Teams use it as the first commit on internal tools, marketing sites, and early-stage product builds — anywhere the goal is to put structure in place before brand and copy land.",
+      "A year-by-year income plan, drawing from the right accounts in the right order, with strategic RRSP drawdowns before RRIF conversion and TFSA contributions where appropriate, can save significant tax over a 25–30 year retirement. The right schedule depends on your specific income sources, spousal situation, and estate goals. This is scenario work at its most valuable.",
     ],
   },
   {
-    q: "How does Frame handle theming and dark mode?",
+    q: "We have a mix of assets (DB pension, rental properties, RRSPs, TFSAs, business), can you help us put it all together?",
     a: [
-      "Theme tokens live in CSS variables and are wired through Tailwind's theme inline mapping. A floating theme switch toggles between light and dark; reduced-motion preferences and color-scheme metadata are honored automatically. Replace the token values with your brand palette and the rest of the system follows.",
+      "Yes, this is exactly the kind of complexity scenario-based planning is designed for. We model all of your assets together, in real time, so you can see how each piece interacts with the others and make decisions with the full picture in front of you.",
     ],
   },
   {
-    q: "What's missing on purpose?",
+    q: "When should I convert my RRSP to a RRIF, and how much should I be drawing down each year?",
     a: [
-      "Frame intentionally omits anything that would couple it to a specific product: forms libraries, state managers, auth, analytics, and CMS integrations are not pre-wired. The structure is opinionated; the runtime behavior is not. Drop in whatever your team prefers.",
+      "You must convert by the end of the year you turn 71, but converting earlier and drawing down strategically can reduce your OAS clawback, shrink your eventual RRIF balance, and lower your lifetime tax. We model the optimal conversion and drawdown schedule as part of your income plan, given your specific situation.",
     ],
   },
   {
-    q: "Will I outgrow Frame?",
+    q: "We have a significant age gap, how do we plan retirement around two very different financial timelines?",
     a: [
-      "That's the goal. Frame is meant to be torn out incrementally as your real design system, content model, and feature surface arrive. Most teams replace components piece by piece rather than all at once — by the time the scaffold is gone, the structure underneath has already paid for itself.",
+      "Age-gap couples face genuinely asymmetric planning challenges, different CPP ages, different RRIF timelines, different health and lifestyle phases. Scenario planning is especially valuable here because we can model what the plan looks like at each transition point across both timelines simultaneously, in the same meeting.",
+    ],
+  },
+  {
+    q: "We're planning to sell our business, farm, or rental property, how does that factor into our retirement income plan?",
+    a: [
+      "A business or property sale reshapes your entire financial picture. Timing, capital gains exposure, the Lifetime Capital Gains Exemption, and how proceeds integrate with your retirement income and estate strategy all need to be modelled together, ideally before the sale, not after.",
+    ],
+  },
+  {
+    q: "Should I take my government pension as a monthly payment or commute the value?",
+    a: [
+      "This is one of the most consequential and irreversible decisions in retirement planning. The right answer depends on your health, longevity expectations, your spouse's situation, and how you'd invest the commuted value. We model both scenarios in full, including survivor benefits and tax implications, before you decide.",
+    ],
+  },
+  {
+    q: "I have retained earnings sitting in a corporation, what's the best way to draw those down alongside my personal retirement income?",
+    a: [
+      "Corporate retained earnings offer real tax planning flexibility, salary, eligible dividends, non-eligible dividends, and capital dividends each create different outcomes. The right sequence and timing depends on your personal income, your spouse's situation, and your estate goals. This is genuinely complex territory and one where scenario modelling earns its keep most clearly.",
     ],
   },
 ];
@@ -71,17 +90,36 @@ export function Faq(): ReactNode {
 
   return (
     <section
+      id="faq"
       aria-labelledby={headingId}
-      className="relative border-b border-border p-6 sm:p-10 lg:p-14"
+      className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24"
     >
-      <h2
-        id={headingId}
-        className="text-3xl font-medium leading-[1.05] tracking-tighter text-foreground sm:text-4xl lg:text-[3.5rem]"
-      >
-        FAQs
-      </h2>
-
-      <div className="mt-6 border-t border-border sm:mt-10 lg:mt-14">
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
+            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+            Common Questions
+          </div>
+          <h2
+            id={headingId}
+            className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]"
+          >
+            Questions you might{" "}
+            <em className="font-light text-gold">actually</em> have.
+          </h2>
+          <p className="mt-5 max-w-md font-serif text-base italic leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+            These are the questions people actually bring to a first
+            conversation. You&apos;re probably wondering some of them too.
+          </p>
+          <Link
+            href="/faq"
+            className="focus-ring mt-8 inline-flex items-center gap-2 border-b border-gold pb-1 text-xs font-medium uppercase tracking-[0.1em] text-foreground transition-all hover:text-gold"
+          >
+            See all 25+ questions
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+        <div className="border-t border-border">
         <ul className="divide-y divide-border">
           {FAQS.map((faq, i) => (
             <FaqRow
@@ -92,6 +130,7 @@ export function Faq(): ReactNode {
             />
           ))}
         </ul>
+        </div>
       </div>
       <SectionCorners />
     </section>
