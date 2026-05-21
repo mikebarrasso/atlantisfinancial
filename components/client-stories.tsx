@@ -31,43 +31,42 @@ const stories: ReadonlyArray<{
 
 export function ClientStories(): ReactNode {
   return (
-    <section id="stories" className="relative border-b border-border">
+    <section id="stories" className="border-border relative border-b">
       <div className="px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
         <div className="mb-12 max-w-2xl">
-          <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+          <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
             My Clients&apos; Stories
           </div>
-          <h2 className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]">
-            Not our story.{" "}
-            <em className="font-light text-gold">Their stories.</em>
+          <h2 className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl lg:text-[3.4rem]">
+            This could be your{" "}
+            <em className="text-gold font-light">before and after.</em>
           </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
-            A story is an arc, before, during, after. That&apos;s far more
-            honest than a testimonial.
+          <p className="text-muted-foreground mt-5 max-w-md text-base leading-relaxed sm:text-[1.05rem]">
+            A story is an arc: before, during, after. These are real situations
+            we&apos;ve worked through. Yours would be your own.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 border border-border md:grid-cols-3">
+        <div className="border-border grid grid-cols-1 border md:grid-cols-3">
           {stories.map((story, i) => (
             <article
               key={story.who}
-              className={`flex flex-col gap-4 p-6 transition-colors hover:bg-gold/[0.02] sm:p-8 ${
+              className={`hover:bg-gold/[0.02] flex flex-col gap-4 p-6 transition-colors sm:p-8 ${
                 i < stories.length - 1
-                  ? "border-b border-border md:border-b-0 md:border-r"
+                  ? "border-border border-b md:border-r md:border-b-0"
                   : ""
               }`}
             >
-              <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-gold/70">
+              <span className="text-gold/70 text-[10px] font-medium tracking-[0.18em] uppercase">
                 Before → After
               </span>
-              <p className="border-b border-border pb-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="border-border text-muted-foreground border-b pb-4 text-sm leading-relaxed">
                 {story.before}
               </p>
-              <p className="font-serif text-lg italic leading-snug text-foreground">
+              <p className="text-foreground font-serif text-lg leading-snug italic">
                 &ldquo;{story.after}&rdquo;
               </p>
-              <p className="mt-auto pt-2 text-[10px] uppercase tracking-[0.12em] text-gold/60">
+              <p className="text-gold/60 mt-auto pt-2 text-[10px] tracking-[0.12em] uppercase">
                 {story.who}
               </p>
             </article>
@@ -76,24 +75,23 @@ export function ClientStories(): ReactNode {
 
         {/* Video block */}
         <div className="mt-14">
-          <div className="mb-4 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+          <div className="text-gold mb-4 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
             Client Video, In Their Own Words
           </div>
-          <div className="relative mx-auto flex aspect-video w-full max-w-3xl flex-col items-center justify-center gap-3 overflow-hidden rounded-md border border-border bg-gradient-to-br from-muted to-background">
+          <div className="border-border from-muted to-background relative mx-auto flex aspect-video w-full max-w-3xl flex-col items-center justify-center gap-3 overflow-hidden rounded-md border bg-gradient-to-br">
             <button
               type="button"
               aria-label="Play client video testimonial"
-              className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold/50 text-gold transition-all hover:scale-105 hover:border-gold"
+              className="border-gold/50 text-gold hover:border-gold flex h-16 w-16 items-center justify-center rounded-full border-2 transition-all hover:scale-105"
             >
               <span aria-hidden="true" className="ml-1 text-xl">
                 ▶
               </span>
             </button>
-            <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground/50">
+            <span className="text-muted-foreground/50 text-[11px] tracking-[0.18em] uppercase">
               Client video testimonial, compilation
             </span>
-            <p className="absolute bottom-3 text-[10px] italic text-muted-foreground/40">
+            <p className="text-muted-foreground/40 absolute bottom-3 text-[10px] italic">
               Replace with client compilation video
             </p>
           </div>

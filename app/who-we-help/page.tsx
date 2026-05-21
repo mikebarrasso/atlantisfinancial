@@ -1,9 +1,10 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { Reveal } from "@/components/reveal";
+import { Reveal, RevealHero, RevealHeroItem } from "@/components/reveal";
 import { SectionCorners } from "@/components/section-corners";
 import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -84,77 +85,101 @@ export default function WhoWeHelpPage(): ReactNode {
       <Header />
       <main id="main-content" className="flex-1">
         {/* ── HERO ──────────────────────────────────────────── */}
-        <section className="relative border-b border-border">
-          <div className="px-6 py-20 sm:px-10 sm:py-24 lg:px-14 lg:py-28">
-            <div className="enter mb-7 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-              <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
-              Who We Help
+        <section className="border-border relative border-b">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr]">
+            <RevealHero className="lg:border-border flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:border-r lg:px-14 lg:py-24">
+              <RevealHeroItem>
+                <div className="text-gold mb-7 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
+                  Who We Help
+                </div>
+              </RevealHeroItem>
+              <RevealHeroItem>
+                <h1 className="text-foreground font-serif text-5xl leading-[0.95] font-light tracking-tight sm:text-6xl lg:text-[5.4rem] xl:text-[6rem]">
+                  Built for the
+                  <br />
+                  <em className="text-gold font-light">complicated</em> years.
+                </h1>
+              </RevealHeroItem>
+              <RevealHeroItem>
+                <p className="text-muted-foreground mt-7 max-w-xl font-serif text-lg leading-snug italic sm:text-xl">
+                  Most planning assumes a simple situation. Ours starts where your
+                  real life is, with a pension, a business, a portfolio, a partner,
+                  an estate, and a lot of decisions whose timing matters as much as
+                  their outcome.
+                </p>
+              </RevealHeroItem>
+            </RevealHero>
+
+            <div className="enter-fade bg-muted relative min-h-80 overflow-hidden lg:min-h-160">
+              <Image
+                src="/images/who-we-help-hero.png"
+                alt="An active couple walking on a beach at sunset, the kind of retirement they've planned for together."
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+                className="object-cover object-center"
+              />
+              <div
+                aria-hidden="true"
+                className="from-background/80 pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r to-transparent lg:w-24"
+              />
             </div>
-            <h1 className="enter font-serif text-5xl font-light leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[6rem]">
-              Built for the
-              <br />
-              <em className="font-light text-gold">complicated</em> years.
-            </h1>
-            <p className="enter mt-7 max-w-3xl font-serif text-lg italic leading-snug text-muted-foreground sm:text-xl">
-              Most planning assumes a simple situation. Ours starts where
-              your real life is, with a pension, a business, a portfolio,
-              a partner, an estate, and a lot of decisions whose timing
-              matters as much as their outcome.
-            </p>
           </div>
           <SectionCorners />
         </section>
 
         {/* ── SCENARIO CATEGORIES ─────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-6xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 The Scenarios We Plan
               </div>
-              <h2 className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]">
+              <h2 className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl lg:text-[3.4rem]">
                 We don&apos;t plan for a type of person.{" "}
-                <em className="font-light text-gold">
+                <em className="text-gold font-light">
                   We plan for the questions.
                 </em>
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
-                Scenario-based planning works for any situation complex
-                enough to need it. The plan is different for everyone. The
-                questions we model are the same ones almost every Canadian
-                near or at retirement actually has.
+              <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-[1.05rem]">
+                Scenario-based planning works for any situation complex enough
+                to need it. The plan is different for everyone. The questions we
+                model are the same ones almost every Canadian near or at
+                retirement actually has.
               </p>
 
               <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {scenarioCategories.map((scenario) => (
                   <article
                     key={scenario.title}
-                    className="flex flex-col gap-5 border border-border bg-muted/30 p-7 sm:p-9"
+                    className="border-border bg-muted/30 flex flex-col gap-5 border p-7 sm:p-9"
                   >
                     <div>
-                      <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.18em] text-gold opacity-80">
+                      <p className="text-gold mb-3 text-[10px] font-medium tracking-[0.18em] uppercase opacity-80">
                         {scenario.label}
                       </p>
-                      <h3 className="font-serif text-2xl font-light leading-tight tracking-tight text-foreground sm:text-3xl">
+                      <h3 className="text-foreground font-serif text-2xl leading-tight font-light tracking-tight sm:text-3xl">
                         {scenario.title}
                       </h3>
-                      <p className="mt-3 text-sm italic leading-snug text-muted-foreground sm:text-[0.95rem]">
+                      <p className="text-muted-foreground mt-3 text-sm leading-snug italic sm:text-[0.95rem]">
                         {scenario.summary}
                       </p>
                     </div>
 
                     <div>
-                      <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.18em] text-gold/70">
+                      <p className="text-gold/70 mb-3 text-[10px] font-medium tracking-[0.18em] uppercase">
                         Questions we model
                       </p>
                       <ul className="space-y-2.5">
                         {scenario.questions.map((question) => (
                           <li
                             key={question}
-                            className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
+                            className="text-muted-foreground flex gap-3 text-sm leading-relaxed"
                           >
-                            <span aria-hidden="true" className="mt-1 shrink-0 text-gold">
+                            <span
+                              aria-hidden="true"
+                              className="text-gold mt-1 shrink-0"
+                            >
                               →
                             </span>
                             <span>{question}</span>
@@ -171,27 +196,26 @@ export default function WhoWeHelpPage(): ReactNode {
 
         {/* ── COMPLEXITY CHECKLIST ──────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border bg-muted/30 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border bg-muted/30 relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
               <div>
-                <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                  <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+                <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                   Complexity Inventory
                 </div>
-                <h2 className="font-serif text-3xl font-light leading-[1.1] tracking-tight text-foreground sm:text-4xl">
+                <h2 className="text-foreground font-serif text-3xl leading-[1.1] font-light tracking-tight sm:text-4xl">
                   How many of these{" "}
-                  <em className="font-light text-gold">apply to you?</em>
+                  <em className="text-gold font-light">apply to you?</em>
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+                <p className="text-muted-foreground mt-5 text-base leading-relaxed sm:text-[1.05rem]">
                   Four or more is the threshold where traditional planning
-                  starts to break down, and where scenario-based planning
-                  earns its keep. Six or more is where most of our clients
-                  sit when we first meet.
+                  starts to break down, and where scenario-based planning earns
+                  its keep. Six or more is where most of our clients sit when we
+                  first meet.
                 </p>
                 <div className="mt-7">
                   <Link
                     href="/#what-if"
-                    className="focus-ring inline-flex items-center gap-2 border-b border-gold pb-1 text-xs font-medium uppercase tracking-[0.1em] text-foreground transition-colors hover:text-gold"
+                    className="focus-ring border-gold text-foreground hover:text-gold inline-flex items-center gap-2 border-b pb-1 text-xs font-medium tracking-[0.1em] uppercase transition-colors"
                   >
                     Take the 10-question quiz <span aria-hidden="true">→</span>
                   </Link>
@@ -201,9 +225,12 @@ export default function WhoWeHelpPage(): ReactNode {
                 {complexityChecklist.map((item) => (
                   <li
                     key={item}
-                    className="flex gap-3 border border-border bg-background p-4 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]"
+                    className="border-border bg-background text-muted-foreground flex gap-3 border p-4 text-sm leading-relaxed sm:text-[0.95rem]"
                   >
-                    <span aria-hidden="true" className="mt-0.5 shrink-0 text-gold">
+                    <span
+                      aria-hidden="true"
+                      className="text-gold mt-0.5 shrink-0"
+                    >
                       ☐
                     </span>
                     <span>{item}</span>
@@ -216,29 +243,27 @@ export default function WhoWeHelpPage(): ReactNode {
 
         {/* ── WHERE WE WORK ─────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-3xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 Where We Work
               </div>
-              <h2 className="font-serif text-3xl font-light leading-[1.15] tracking-tight text-foreground sm:text-4xl">
+              <h2 className="text-foreground font-serif text-3xl leading-[1.15] font-light tracking-tight sm:text-4xl">
                 Based in Barrie.{" "}
-                <em className="font-light text-gold">Working across Canada.</em>
+                <em className="text-gold font-light">Working across Canada.</em>
               </h2>
-              <div className="mt-7 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+              <div className="text-muted-foreground mt-7 space-y-5 text-base leading-relaxed sm:text-[1.05rem]">
                 <p>
-                  Our office is in Barrie, Ontario, roughly an hour north
-                  of Toronto. We work with clients in person across central
+                  Our office is in Barrie, Ontario, roughly an hour north of
+                  Toronto. We work with clients in person across central
                   Ontario, the Greater Toronto Area, and Muskoka.
                 </p>
                 <p>
                   We also work virtually with clients across Canada, from
-                  Vancouver Island to St. John&apos;s. The scenario tools
-                  we use are designed for the screen as much as the
-                  boardroom, and the planning is the same either way. Many
-                  clients we&apos;ve worked with for years have never been
-                  to our office.
+                  Vancouver Island to St. John&apos;s. The scenario tools we use
+                  are designed for the screen as much as the boardroom, and the
+                  planning is the same either way. Many clients we&apos;ve
+                  worked with for years have never been to our office.
                 </p>
               </div>
             </div>
@@ -247,28 +272,27 @@ export default function WhoWeHelpPage(): ReactNode {
 
         {/* ── CTA ──────────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-t-[3px] border-gold bg-muted/30 px-6 py-16 sm:px-10 lg:px-14">
+          <section className="border-gold bg-muted/30 relative border-t-[3px] px-6 py-16 sm:px-10 lg:px-14">
             <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-6">
               <div>
-                <h2 className="font-serif text-3xl font-light leading-tight tracking-tight text-foreground sm:text-4xl">
-                  Recognise{" "}
-                  <em className="font-light text-gold">yourself</em> in any
-                  of this?
+                <h2 className="text-foreground font-serif text-3xl leading-tight font-light tracking-tight sm:text-4xl">
+                  Recognise <em className="text-gold font-light">yourself</em>{" "}
+                  in any of this?
                 </h2>
-                <p className="mt-2 font-serif text-sm italic text-muted-foreground">
+                <p className="text-muted-foreground mt-2 font-serif text-sm italic">
                   Start a conversation, or take the quiz first.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@atlantisfinancial.ca"
-                  className="focus-ring inline-flex items-center bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+                  className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
                 >
                   Start a Conversation
                 </a>
                 <Link
                   href="/#what-if"
-                  className="focus-ring inline-flex items-center border border-border px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                  className="focus-ring border-border text-muted-foreground hover:border-gold hover:text-gold inline-flex items-center border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
                 >
                   Take the Quiz
                 </Link>

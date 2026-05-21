@@ -52,7 +52,7 @@ function LogoCell({ logo }: { logo: Publication }): ReactNode {
       <div
         role="img"
         aria-label={logo.name}
-        className="h-7 w-full bg-foreground/55 transition-colors duration-300 hover:bg-gold"
+        className="bg-foreground/55 hover:bg-gold h-7 w-full transition-colors duration-300"
         style={maskStyle}
       />
     </div>
@@ -64,7 +64,7 @@ export function PublicationsMarquee(): ReactNode {
   const x = useTransform(xPercent, (v) => `${v}%`);
 
   useAnimationFrame((_time, delta) => {
-    const speed = 0.8; // percent per second — gentle, doesn't dominate the hero
+    const speed = 0.8; // percent per second, gentle, doesn't dominate the hero
     const moveBy = (speed * delta) / 1000;
     const newX = xPercent.get() - moveBy;
     if (newX <= -50) {
@@ -76,10 +76,7 @@ export function PublicationsMarquee(): ReactNode {
 
   return (
     <div className="relative flex w-full overflow-hidden py-2">
-      <motion.div
-        className="flex shrink-0 gap-12 pr-12"
-        style={{ x }}
-      >
+      <motion.div className="flex shrink-0 gap-12 pr-12" style={{ x }}>
         {publications.map((logo, i) => (
           <LogoCell key={`a-${i}`} logo={logo} />
         ))}
@@ -100,14 +97,14 @@ export function PublicationsMarquee(): ReactNode {
         ))}
       </motion.div>
 
-      {/* Edge fade overlays — uses bg-background so it adapts to theme */}
+      {/* Edge fade overlays, uses bg-background so it adapts to theme */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent sm:w-32"
+        className="from-background pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r to-transparent sm:w-32"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent sm:w-32"
+        className="from-background pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l to-transparent sm:w-32"
       />
     </div>
   );

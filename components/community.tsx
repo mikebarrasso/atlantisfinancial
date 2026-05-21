@@ -96,7 +96,7 @@ export function Community(): ReactNode {
     <section
       ref={sectionRef}
       aria-labelledby="community-heading"
-      className="relative border-b border-border"
+      className="border-border relative border-b"
     >
       <div className="relative h-[180vh]">
         <div
@@ -111,14 +111,13 @@ export function Community(): ReactNode {
             <div className="max-w-2xl">
               <h2
                 id="community-heading"
-                className="text-2xl font-medium leading-[1.05] tracking-tighter text-foreground sm:text-3xl lg:text-[2.5rem]"
+                className="text-foreground text-2xl leading-[1.05] font-medium tracking-tighter sm:text-3xl lg:text-[2.5rem]"
               >
                 From our community, built with Frame
               </h2>
-              <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground sm:text-base">
-                A small wall of work shipped on top of the template.
-                Different fields, different aesthetics, same starting
-                point.
+              <p className="text-muted-foreground mt-3 max-w-lg text-sm leading-relaxed sm:text-base">
+                A small wall of work shipped on top of the template. Different
+                fields, different aesthetics, same starting point.
               </p>
             </div>
           </div>
@@ -156,11 +155,7 @@ export function Community(): ReactNode {
   );
 }
 
-function Backdrop({
-  opacity,
-}: {
-  opacity: MotionValue<number>;
-}): ReactNode {
+function Backdrop({ opacity }: { opacity: MotionValue<number> }): ReactNode {
   return (
     <motion.div
       aria-hidden="true"
@@ -228,11 +223,11 @@ function ReducedRow({
 
 function CommunityCard({ entry }: { entry: CommunityEntry }): ReactNode {
   return (
-    <article className="relative flex aspect-5/6 w-75 shrink-0 flex-col justify-end overflow-hidden rounded-2xl border border-border bg-background p-5 sm:w-90 sm:p-6">
-      <h3 className="text-base font-medium leading-tight tracking-tight text-foreground">
+    <article className="border-border bg-background relative flex aspect-5/6 w-75 shrink-0 flex-col justify-end overflow-hidden rounded-2xl border p-5 sm:w-90 sm:p-6">
+      <h3 className="text-foreground text-base leading-tight font-medium tracking-tight">
         {entry.builder}
       </h3>
-      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+      <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
         {entry.project}
       </p>
     </article>

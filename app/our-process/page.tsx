@@ -1,6 +1,7 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { Reveal } from "@/components/reveal";
+import { PlanningCycle } from "@/components/planning-cycle";
+import { Reveal, RevealHero, RevealHeroItem } from "@/components/reveal";
 import { SectionCorners } from "@/components/section-corners";
 import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
@@ -150,35 +151,45 @@ export default function OurProcessPage(): ReactNode {
       <Header />
       <main id="main-content" className="flex-1">
         {/* ── HERO ──────────────────────────────────────────── */}
-        <section className="relative border-b border-border">
-          <div className="px-6 py-20 sm:px-10 sm:py-24 lg:px-14 lg:py-28">
-            <div className="enter mb-7 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-              <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
-              Our Process
+        <section className="border-border relative border-b">
+          <RevealHero className="grid grid-cols-1 items-center gap-12 px-6 py-16 sm:px-10 sm:py-20 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-14 lg:px-14 lg:py-24 xl:grid-cols-[1.05fr_minmax(0,28rem)]">
+            <div>
+              <RevealHeroItem>
+                <div className="text-gold mb-7 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
+                  Our Process
+                </div>
+              </RevealHeroItem>
+              <RevealHeroItem>
+                <h1 className="text-foreground font-serif text-5xl leading-[0.95] font-light tracking-tight sm:text-6xl lg:text-[5.4rem] xl:text-[6rem]">
+                  Not a straight line.
+                  <br />
+                  <em className="text-gold font-light">A continuous cycle.</em>
+                </h1>
+              </RevealHeroItem>
+              <RevealHeroItem>
+                <p className="text-muted-foreground mt-7 max-w-2xl font-serif text-lg leading-snug italic sm:text-xl">
+                  Four phases, run together with you live in the meeting. Each
+                  cycle returns to Discovery from a higher vantage point,
+                  because life keeps moving, and the plan moves with it.
+                </p>
+              </RevealHeroItem>
             </div>
-            <h1 className="enter font-serif text-5xl font-light leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[6rem]">
-              Not a straight line.
-              <br />
-              <em className="font-light text-gold">A continuous cycle.</em>
-            </h1>
-            <p className="enter mt-7 max-w-3xl font-serif text-lg italic leading-snug text-muted-foreground sm:text-xl">
-              Four phases, run together with you live in the meeting. Each
-              cycle returns to Discovery from a higher vantage point,
-              because life keeps moving, and the plan moves with it.
-            </p>
-          </div>
+
+            <RevealHeroItem className="mx-auto w-full max-w-md lg:max-w-none lg:justify-self-end">
+              <PlanningCycle />
+            </RevealHeroItem>
+          </RevealHero>
           <SectionCorners />
         </section>
 
         {/* ── PHASES IN DETAIL ──────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 Four Phases
               </div>
-              <h2 className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl">
+              <h2 className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl">
                 What actually happens, in order.
               </h2>
 
@@ -186,38 +197,41 @@ export default function OurProcessPage(): ReactNode {
                 {phaseDetails.map((phase) => (
                   <article
                     key={phase.num}
-                    className="grid grid-cols-1 gap-8 border-t border-border pt-12 lg:grid-cols-[200px_1fr] lg:gap-14"
+                    className="border-border grid grid-cols-1 gap-8 border-t pt-12 lg:grid-cols-[200px_1fr] lg:gap-14"
                   >
                     {/* Number + name */}
                     <div>
-                      <p className="font-serif text-5xl font-light text-gold/30 lg:text-6xl">
+                      <p className="text-gold/30 font-serif text-5xl font-light lg:text-6xl">
                         {phase.num}
                       </p>
-                      <h3 className="mt-4 font-serif text-3xl font-light leading-tight text-foreground sm:text-4xl">
+                      <h3 className="text-foreground mt-4 font-serif text-3xl leading-tight font-light sm:text-4xl">
                         {phase.name}
                       </h3>
-                      <p className="mt-2 text-[10px] uppercase tracking-[0.16em] text-gold">
+                      <p className="text-gold mt-2 text-[10px] tracking-[0.16em] uppercase">
                         {phase.outputs}
                       </p>
                     </div>
 
                     {/* Content */}
                     <div>
-                      <p className="font-serif text-lg italic leading-snug text-muted-foreground sm:text-xl">
+                      <p className="text-muted-foreground font-serif text-lg leading-snug italic sm:text-xl">
                         {phase.summary}
                       </p>
 
                       <div className="mt-7">
-                        <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.18em] text-gold/80">
+                        <p className="text-gold/80 mb-3 text-[10px] font-medium tracking-[0.18em] uppercase">
                           What happens
                         </p>
                         <ul className="space-y-2.5">
                           {phase.whatHappens.map((item) => (
                             <li
                               key={item}
-                              className="flex gap-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]"
+                              className="text-muted-foreground flex gap-3 text-sm leading-relaxed sm:text-[0.95rem]"
                             >
-                              <span aria-hidden="true" className="mt-1 shrink-0 text-gold">
+                              <span
+                                aria-hidden="true"
+                                className="text-gold mt-1 shrink-0"
+                              >
                                 →
                               </span>
                               <span>{item}</span>
@@ -226,11 +240,11 @@ export default function OurProcessPage(): ReactNode {
                         </ul>
                       </div>
 
-                      <div className="mt-6 border-l-2 border-gold bg-gold/[0.04] px-4 py-3">
-                        <p className="mb-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-gold">
+                      <div className="border-gold bg-gold/[0.04] mt-6 border-l-2 px-4 py-3">
+                        <p className="text-gold mb-1.5 text-[10px] font-medium tracking-[0.18em] uppercase">
                           What you walk away with
                         </p>
-                        <p className="font-serif text-sm italic leading-snug text-foreground sm:text-base">
+                        <p className="text-foreground font-serif text-sm leading-snug italic sm:text-base">
                           {phase.whatYouGet}
                         </p>
                       </div>
@@ -244,32 +258,31 @@ export default function OurProcessPage(): ReactNode {
 
         {/* ── EXAMPLE SCENARIOS ─────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border bg-muted/30 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border bg-muted/30 relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 The Scenarios We Actually Run
               </div>
-              <h2 className="font-serif text-3xl font-light leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-[2.8rem]">
+              <h2 className="text-foreground font-serif text-3xl leading-[1.1] font-light tracking-tight sm:text-4xl lg:text-[2.8rem]">
                 Examples from{" "}
-                <em className="font-light text-gold">real meetings.</em>
+                <em className="text-gold font-light">real meetings.</em>
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
-                These are the what-ifs that come up most. Each one gets
-                modeled live, side-by-side, until the right decision
-                becomes the obvious one.
+              <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-[1.05rem]">
+                These are the what-ifs that come up most. Each one gets modeled
+                live, side-by-side, until the right decision becomes the obvious
+                one.
               </p>
 
               <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
                 {exampleScenarios.map((s) => (
                   <article
                     key={s.title}
-                    className="border border-border bg-background p-6 sm:p-7"
+                    className="border-border bg-background border p-6 sm:p-7"
                   >
-                    <h3 className="font-serif text-lg font-medium leading-tight text-foreground sm:text-xl">
+                    <h3 className="text-foreground font-serif text-lg leading-tight font-medium sm:text-xl">
                       {s.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                       {s.body}
                     </p>
                   </article>
@@ -281,28 +294,27 @@ export default function OurProcessPage(): ReactNode {
 
         {/* ── COMPARISON TABLE ──────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 How It Compares
               </div>
-              <h2 className="font-serif text-3xl font-light leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-[2.8rem]">
+              <h2 className="text-foreground font-serif text-3xl leading-[1.1] font-light tracking-tight sm:text-4xl lg:text-[2.8rem]">
                 Scenario-based vs.{" "}
-                <em className="font-light text-gold">traditional planning.</em>
+                <em className="text-gold font-light">traditional planning.</em>
               </h2>
 
               <div className="mt-10 overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="border-y border-border bg-muted/40">
-                      <th className="px-4 py-4 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-gold sm:px-6">
+                    <tr className="border-border bg-muted/40 border-y">
+                      <th className="text-gold px-4 py-4 text-left text-[10px] font-medium tracking-[0.16em] uppercase sm:px-6">
                         Dimension
                       </th>
-                      <th className="px-4 py-4 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:px-6">
+                      <th className="text-muted-foreground px-4 py-4 text-left text-[10px] font-medium tracking-[0.16em] uppercase sm:px-6">
                         Traditional Planning
                       </th>
-                      <th className="px-4 py-4 text-left text-[10px] font-medium uppercase tracking-[0.16em] text-gold sm:px-6">
+                      <th className="text-gold px-4 py-4 text-left text-[10px] font-medium tracking-[0.16em] uppercase sm:px-6">
                         Scenario-Based Planning
                       </th>
                     </tr>
@@ -311,15 +323,15 @@ export default function OurProcessPage(): ReactNode {
                     {comparisonRows.map((row) => (
                       <tr
                         key={row.dimension}
-                        className="border-b border-border align-top"
+                        className="border-border border-b align-top"
                       >
-                        <td className="px-4 py-5 text-sm font-medium text-foreground sm:px-6">
+                        <td className="text-foreground px-4 py-5 text-sm font-medium sm:px-6">
                           {row.dimension}
                         </td>
-                        <td className="px-4 py-5 text-sm leading-relaxed text-muted-foreground sm:px-6">
+                        <td className="text-muted-foreground px-4 py-5 text-sm leading-relaxed sm:px-6">
                           {row.traditional}
                         </td>
-                        <td className="px-4 py-5 text-sm leading-relaxed text-foreground sm:px-6">
+                        <td className="text-foreground px-4 py-5 text-sm leading-relaxed sm:px-6">
                           {row.scenario}
                         </td>
                       </tr>
@@ -331,73 +343,30 @@ export default function OurProcessPage(): ReactNode {
           </section>
         </Reveal>
 
-        {/* ── TYPICAL ENGAGEMENT ────────────────────────────── */}
-        <Reveal>
-          <section className="relative border-b border-border bg-muted/30 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
-            <div className="mx-auto max-w-3xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
-                The Typical Engagement
-              </div>
-              <h2 className="font-serif text-3xl font-light leading-[1.15] tracking-tight text-foreground sm:text-4xl">
-                What this looks like{" "}
-                <em className="font-light text-gold">on the calendar.</em>
-              </h2>
-              <div className="mt-9 space-y-6">
-                <TimelineRow
-                  step="Initial Conversation"
-                  when="30–45 minutes"
-                  detail="No agenda. You tell us what's on your mind. We tell you whether scenario-based planning is the right fit for your situation. No obligation either way."
-                />
-                <TimelineRow
-                  step="Discovery"
-                  when="2–3 sessions, 60–90 minutes each"
-                  detail="We build the full picture of your situation, accounts, cash flow, history, intentions. You leave each session with a clearer map of where you actually stand."
-                />
-                <TimelineRow
-                  step="Scenarios"
-                  when="3–5 sessions, 90 minutes each"
-                  detail="The what-if work. Multiple paths modeled live. Trade-offs visible. The right plan emerges through the conversation, not from a recommendation."
-                />
-                <TimelineRow
-                  step="Solutions & Action"
-                  when="4–8 weeks"
-                  detail="Documents drafted. Accounts opened. Portfolio implemented. Tax and estate coordination. The decisions become real."
-                />
-                <TimelineRow
-                  step="Ongoing"
-                  when="Annual review + life events"
-                  detail="The cycle returns to Discovery at every meaningful change. We update what's true, re-run the scenarios that matter, and adjust the plan."
-                />
-              </div>
-            </div>
-          </section>
-        </Reveal>
-
         {/* ── CTA ──────────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-t-[3px] border-gold bg-navy-deep px-6 py-16 sm:px-10 lg:px-14">
+          <section className="border-gold bg-navy-deep relative border-t-[3px] px-6 py-16 sm:px-10 lg:px-14">
             <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-6">
               <div>
-                <h2 className="font-serif text-3xl font-light leading-tight tracking-tight text-cream sm:text-4xl">
+                <h2 className="text-cream font-serif text-3xl leading-tight font-light tracking-tight sm:text-4xl">
                   Want to see this process{" "}
-                  <em className="font-light text-gold">run for you?</em>
+                  <em className="text-gold font-light">run for you?</em>
                 </h2>
-                <p className="mt-2 font-serif text-sm italic text-cream/50">
-                  Start with the initial conversation. Everything else
-                  follows from there.
+                <p className="text-cream/50 mt-2 font-serif text-sm italic">
+                  Start with the initial conversation. Everything else follows
+                  from there.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@atlantisfinancial.ca"
-                  className="focus-ring inline-flex items-center bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+                  className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
                 >
                   Start a Conversation
                 </a>
                 <Link
                   href="/#what-if"
-                  className="focus-ring inline-flex items-center border border-gold/30 px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-cream/70 transition-colors hover:border-gold hover:text-gold"
+                  className="focus-ring border-gold/30 text-cream/70 hover:border-gold hover:text-gold inline-flex items-center border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
                 >
                   Take the Quiz
                 </Link>
@@ -408,31 +377,5 @@ export default function OurProcessPage(): ReactNode {
       </main>
       <Footer />
     </>
-  );
-}
-
-function TimelineRow({
-  step,
-  when,
-  detail,
-}: {
-  step: string;
-  when: string;
-  detail: string;
-}): ReactNode {
-  return (
-    <div className="grid grid-cols-1 gap-3 border-l-2 border-gold pl-5 sm:grid-cols-[170px_1fr] sm:gap-6 sm:pl-7">
-      <div>
-        <p className="font-serif text-xl font-light tracking-tight text-foreground">
-          {step}
-        </p>
-        <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-gold/80">
-          {when}
-        </p>
-      </div>
-      <p className="text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-        {detail}
-      </p>
-    </div>
   );
 }

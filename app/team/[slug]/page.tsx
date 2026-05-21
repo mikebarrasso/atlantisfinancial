@@ -19,7 +19,9 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   return teamMembers.map((m) => ({ slug: m.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const member = findMember(slug);
   if (!member) return createMetadata({ title: "Team", path: "/team" });
@@ -32,7 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default async function TeamProfilePage({ params }: PageProps): Promise<ReactNode> {
+export default async function TeamProfilePage({
+  params,
+}: PageProps): Promise<ReactNode> {
   const { slug } = await params;
   const member = findMember(slug);
   if (!member || !member.profile) notFound();
@@ -49,13 +53,13 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
 
         {/* ── BIO ────────────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-[2fr_1fr] lg:gap-16">
               <div>
-                <h2 className="border-b border-border pb-3 font-serif text-2xl font-light text-foreground">
+                <h2 className="border-border text-foreground border-b pb-3 font-serif text-2xl font-light">
                   Professional
                 </h2>
-                <div className="mt-7 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+                <div className="text-muted-foreground mt-7 space-y-5 text-base leading-relaxed sm:text-[1.05rem]">
                   {profile.professional.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
@@ -63,10 +67,10 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
 
                 {profile.personal && !profile.minimal && (
                   <>
-                    <h2 className="mt-14 border-b border-border pb-3 font-serif text-2xl font-light text-foreground">
+                    <h2 className="border-border text-foreground mt-14 border-b pb-3 font-serif text-2xl font-light">
                       Personal
                     </h2>
-                    <div className="mt-7 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+                    <div className="text-muted-foreground mt-7 space-y-5 text-base leading-relaxed sm:text-[1.05rem]">
                       {profile.personal.map((p, i) => (
                         <p key={i}>{p}</p>
                       ))}
@@ -77,11 +81,11 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
 
               {/* Sidebar, quote card */}
               <aside className="lg:sticky lg:top-32 lg:self-start">
-                <div className="border-l-[3px] border-gold bg-muted/40 p-6 sm:p-8">
-                  <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-gold">
+                <div className="border-gold bg-muted/40 border-l-[3px] p-6 sm:p-8">
+                  <p className="text-gold mb-4 text-[10px] font-medium tracking-[0.18em] uppercase">
                     In their own words
                   </p>
-                  <p className="font-serif text-lg italic leading-snug text-foreground sm:text-xl">
+                  <p className="text-foreground font-serif text-lg leading-snug italic sm:text-xl">
                     &ldquo;{profile.quote}&rdquo;
                   </p>
                 </div>
@@ -93,10 +97,9 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
         {/* ── Q&A CAROUSEL (skip for minimal/specialist profiles) ─ */}
         {!profile.minimal && profile.qa.length > 0 && (
           <Reveal>
-            <section className="relative border-b border-border bg-muted/40 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+            <section className="border-border bg-muted/40 relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
               <div className="mx-auto max-w-5xl">
-                <div className="mb-12 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                  <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+                <div className="text-gold mb-12 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                   Spotlight Q&amp;A
                 </div>
                 <QACarousel items={profile.qa} />
@@ -107,20 +110,22 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
 
         {/* ── CREDENTIALS ────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
-                <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-gold">
-                  <span aria-hidden="true" className="inline-block h-px w-4 bg-gold" />
+                <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase">
                   Credentials & Registration
                 </div>
                 <ul className="space-y-3">
                   {profile.credentials.map((c) => (
                     <li
                       key={c}
-                      className="flex gap-3 border-b border-border pb-3 text-sm leading-relaxed text-muted-foreground last:border-b-0 last:pb-0 sm:text-[0.95rem]"
+                      className="border-border text-muted-foreground flex gap-3 border-b pb-3 text-sm leading-relaxed last:border-b-0 last:pb-0 sm:text-[0.95rem]"
                     >
-                      <span aria-hidden="true" className="mt-1 shrink-0 text-gold">
+                      <span
+                        aria-hidden="true"
+                        className="text-gold mt-1 shrink-0"
+                      >
                         ·
                       </span>
                       <span>{c}</span>
@@ -132,19 +137,18 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
               {/* Contact */}
               {profile.contact && (
                 <div>
-                  <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-gold">
-                    <span aria-hidden="true" className="inline-block h-px w-4 bg-gold" />
+                  <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase">
                     Contact
                   </div>
-                  <div className="space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                  <div className="text-muted-foreground space-y-3 text-sm leading-relaxed sm:text-[0.95rem]">
                     {profile.contact.email && (
                       <p>
-                        <span className="block text-[10px] uppercase tracking-[0.12em] text-gold/70">
+                        <span className="text-gold/70 block text-[10px] tracking-[0.12em] uppercase">
                           Email
                         </span>
                         <a
                           href={`mailto:${profile.contact.email}`}
-                          className="focus-ring text-foreground transition-colors hover:text-gold"
+                          className="focus-ring text-foreground hover:text-gold transition-colors"
                         >
                           {profile.contact.email}
                         </a>
@@ -152,12 +156,12 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
                     )}
                     {profile.contact.phone && (
                       <p>
-                        <span className="block text-[10px] uppercase tracking-[0.12em] text-gold/70">
+                        <span className="text-gold/70 block text-[10px] tracking-[0.12em] uppercase">
                           Phone
                         </span>
                         <a
                           href={`tel:${profile.contact.phone.replace(/-/g, "")}`}
-                          className="focus-ring text-foreground transition-colors hover:text-gold"
+                          className="focus-ring text-foreground hover:text-gold transition-colors"
                         >
                           {profile.contact.phone}
                           {profile.contact.extension &&
@@ -166,7 +170,7 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
                       </p>
                     )}
                     <p>
-                      <span className="block text-[10px] uppercase tracking-[0.12em] text-gold/70">
+                      <span className="text-gold/70 block text-[10px] tracking-[0.12em] uppercase">
                         Location
                       </span>
                       <span className="text-foreground">
@@ -184,24 +188,24 @@ export default async function TeamProfilePage({ params }: PageProps): Promise<Re
 
         {/* ── CTA ────────────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-t-[3px] border-gold bg-muted/30 px-6 py-16 sm:px-10 lg:px-14">
+          <section className="border-gold bg-muted/30 relative border-t-[3px] px-6 py-16 sm:px-10 lg:px-14">
             <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-6">
               <div>
-                <h2 className="font-serif text-3xl font-light leading-tight tracking-tight text-foreground sm:text-4xl">
+                <h2 className="text-foreground font-serif text-3xl leading-tight font-light tracking-tight sm:text-4xl">
                   Want to ask {member.name.split(" ")[0]}{" "}
-                  <em className="font-light text-gold">a question?</em>
+                  <em className="text-gold font-light">a question?</em>
                 </h2>
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href={`mailto:${profile.contact?.email ?? "info@atlantisfinancial.ca"}`}
-                  className="focus-ring inline-flex items-center bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+                  className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
                 >
                   Start a Conversation
                 </a>
                 <Link
                   href="/#team"
-                  className="focus-ring inline-flex items-center border border-border px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                  className="focus-ring border-border text-muted-foreground hover:border-gold hover:text-gold inline-flex items-center border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
                 >
                   ← Back to the Team
                 </Link>
@@ -226,32 +230,31 @@ function ProfileHero({
   if (!profile) return null;
 
   return (
-    <section className="relative border-b border-border bg-navy-deep">
+    <section className="border-border bg-navy-deep relative border-b">
       <div className="relative z-10 px-6 py-20 sm:px-10 sm:py-24 lg:px-14 lg:py-28">
         <div className="mx-auto grid max-w-5xl grid-cols-1 items-end gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
           {/* Left, name + credentials + tagline */}
           <div>
             <Link
               href="/#team"
-              className="focus-ring mb-7 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.1em] text-cream/50 transition-colors hover:text-gold"
+              className="focus-ring text-cream/50 hover:text-gold mb-7 inline-flex items-center gap-2 text-[11px] tracking-[0.1em] uppercase transition-colors"
             >
               <span aria-hidden="true">←</span> Back to the Team
             </Link>
 
-            <div className="mb-4 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-              <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+            <div className="text-gold mb-4 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
               {profile.eyebrow}
             </div>
-            <h1 className="font-serif text-5xl font-light leading-[0.95] tracking-tight text-cream sm:text-6xl lg:text-[5rem]">
+            <h1 className="text-cream font-serif text-5xl leading-[0.95] font-light tracking-tight sm:text-6xl lg:text-[5rem]">
               {member.name}
             </h1>
             {member.credentials && (
-              <p className="mt-3 font-serif text-lg italic tracking-wide text-gold sm:text-xl">
+              <p className="text-gold mt-3 font-serif text-lg tracking-wide italic sm:text-xl">
                 {member.credentials}
               </p>
             )}
             {profile.title && (
-              <p className="mt-2 text-xs uppercase tracking-[0.12em] text-silver">
+              <p className="text-silver mt-2 text-xs tracking-[0.12em] uppercase">
                 {profile.title}
               </p>
             )}
@@ -259,7 +262,7 @@ function ProfileHero({
 
           {/* Right, photo */}
           {hasPhoto ? (
-            <div className="relative h-72 w-56 overflow-hidden border border-gold/20 bg-muted shadow-2xl sm:h-80 sm:w-64">
+            <div className="border-gold/20 bg-muted relative h-72 w-56 overflow-hidden border shadow-2xl sm:h-80 sm:w-64">
               <Image
                 src={member.photo}
                 alt={member.name}
@@ -270,7 +273,7 @@ function ProfileHero({
               />
             </div>
           ) : (
-            <div className="flex h-72 w-56 items-center justify-center border border-silver/30 bg-navy/60 sm:h-80 sm:w-64">
+            <div className="border-silver/30 bg-navy/60 flex h-72 w-56 items-center justify-center border sm:h-80 sm:w-64">
               <svg
                 width="56"
                 height="56"

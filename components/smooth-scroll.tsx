@@ -21,7 +21,7 @@ export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
     if (!features.smoothScroll) return;
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefersReducedMotion) return;
 

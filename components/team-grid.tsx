@@ -18,13 +18,13 @@ function TeamCard({
   return (
     <Link
       href={`/team/${member.slug}`}
-      className="focus-ring group flex w-[130px] shrink-0 flex-col items-center gap-2.5 text-center transition-transform hover:-translate-y-1"
+      className="focus-ring group motion-lift flex w-[130px] shrink-0 flex-col items-center gap-2.5 text-center outline-none"
     >
       <div
-        className={`relative h-[110px] w-[110px] overflow-hidden rounded-full bg-muted transition-colors ${
+        className={`bg-muted relative h-[110px] w-[110px] overflow-hidden rounded-full transition-colors ${
           isConsultant
-            ? "border-2 border-silver/30 group-hover:border-silver-light"
-            : "border-2 border-gold/20 group-hover:border-gold"
+            ? "border-silver/30 group-hover:border-silver-light border-2"
+            : "border-gold/20 group-hover:border-gold border-2"
         }`}
       >
         {hasPhoto ? (
@@ -53,11 +53,11 @@ function TeamCard({
           </div>
         )}
       </div>
-      <span className="text-[13px] font-medium text-foreground">
+      <span className="text-foreground text-[13px] font-medium">
         {member.name}
       </span>
       <span
-        className={`text-[10px] uppercase tracking-[0.07em] ${
+        className={`text-[10px] tracking-[0.07em] uppercase ${
           isConsultant ? "text-silver-light/80" : "text-gold/70"
         }`}
       >
@@ -78,8 +78,7 @@ function TeamRow({
 }): ReactNode {
   return (
     <div>
-      <div className="mb-5 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-silver/70">
-        <span aria-hidden="true" className="inline-block h-px w-4 bg-silver/40" />
+      <div className="text-silver/70 mb-5 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.18em] uppercase">
         {label}
       </div>
       <div className="flex flex-wrap gap-8">
@@ -93,21 +92,17 @@ function TeamRow({
 
 export function TeamGrid(): ReactNode {
   return (
-    <section
-      id="team"
-      className="relative border-b border-border bg-muted/30"
-    >
+    <section id="team" className="border-border bg-muted/30 relative border-b">
       <div className="px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
         <div className="mb-12 max-w-2xl">
-          <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+          <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
             The Team
           </div>
-          <h2 className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]">
+          <h2 className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl lg:text-[3.4rem]">
             The people behind{" "}
-            <em className="font-light text-gold">the process.</em>
+            <em className="text-gold font-light">the process.</em>
           </h2>
-          <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+          <p className="text-muted-foreground mt-5 max-w-md text-base leading-relaxed sm:text-[1.05rem]">
             Click any team member to visit their full profile.
           </p>
         </div>
@@ -124,7 +119,7 @@ export function TeamGrid(): ReactNode {
               members={teamByGroup.specialists}
               variant="consultant"
             />
-            <p className="mt-6 max-w-2xl border-l-2 border-silver/30 pl-4 text-sm italic leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+            <p className="border-silver/30 text-muted-foreground mt-6 max-w-2xl border-l-2 pl-4 text-sm leading-relaxed italic sm:text-[0.95rem]">
               Mitchell is a specialist partner we bring in when your situation
               calls for specific expertise, tax, legal, estate, or corporate
               planning. When you work with Atlantis, you have access to his
@@ -135,7 +130,7 @@ export function TeamGrid(): ReactNode {
 
         <Link
           href="/team"
-          className="focus-ring mt-12 inline-flex items-center gap-2 border-b border-gold pb-1 text-xs font-medium uppercase tracking-[0.1em] text-foreground transition-all hover:text-gold"
+          className="focus-ring border-gold text-foreground hover:text-gold mt-12 inline-flex items-center gap-2 border-b pb-1 text-xs font-medium tracking-[0.1em] uppercase transition-all"
         >
           Meet the full team
           <span aria-hidden="true">→</span>

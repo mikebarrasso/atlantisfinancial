@@ -22,25 +22,23 @@ export default function ArticlesPage(): ReactNode {
       <Header />
       <main id="main-content" className="flex-1">
         {/* ── HERO ──────────────────────────────────────────── */}
-        <section className="relative border-b border-border">
+        <section className="border-border relative border-b">
           <div className="px-6 py-20 sm:px-10 sm:py-24 lg:px-14 lg:py-28">
-            <div className="enter mb-7 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-              <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+            <div className="enter text-gold mb-7 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
               Published Writing
             </div>
-            <h1 className="enter font-serif text-5xl font-light leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[6rem]">
-              In <em className="font-light text-gold">print</em>
+            <h1 className="enter text-foreground font-serif text-5xl leading-[0.95] font-light tracking-tight sm:text-7xl lg:text-[6rem]">
+              In <em className="text-gold font-light">print</em>
               <br />
               and on the record.
             </h1>
-            <p className="enter mt-7 max-w-3xl font-serif text-lg italic leading-snug text-muted-foreground sm:text-xl">
-              A running collection of columns and feature pieces on
-              retirement, decumulation, scenario-based planning, and the
-              questions Canadians actually ask about money, published in the
-              outlets that matter.
+            <p className="enter text-muted-foreground mt-7 max-w-3xl font-serif text-lg leading-snug italic sm:text-xl">
+              A running collection of columns and feature pieces on retirement,
+              decumulation, scenario-based planning, and the questions Canadians
+              actually ask about money, published in the outlets that matter.
             </p>
-            <p className="enter mt-6 text-xs uppercase tracking-[0.12em] text-silver">
-              By <strong className="font-medium text-gold">Allan Norman</strong>{" "}
+            <p className="enter text-silver mt-6 text-xs tracking-[0.12em] uppercase">
+              By <strong className="text-gold font-medium">Allan Norman</strong>{" "}
               · CFP · CIM · RWM
             </p>
           </div>
@@ -48,8 +46,8 @@ export default function ArticlesPage(): ReactNode {
         </section>
 
         {/* ── PUBLICATION LOGOS MARQUEE ────────────────────── */}
-        <section className="relative flex flex-col items-center gap-4 border-b border-border bg-muted/20 py-8">
-          <span className="px-6 text-[10px] font-medium uppercase tracking-[0.2em] text-gold/80">
+        <section className="border-border bg-muted/20 relative flex flex-col items-center gap-4 border-b py-8">
+          <span className="text-gold/80 px-6 text-[10px] font-medium tracking-[0.2em] uppercase">
             Featured in
           </span>
           <PublicationsMarquee />
@@ -62,18 +60,16 @@ export default function ArticlesPage(): ReactNode {
 
         {/* ── CTA BAND ─────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-t border-border bg-muted/30 px-6 py-20 sm:px-10 lg:px-14">
+          <section className="border-border bg-muted/30 relative border-t px-6 py-20 sm:px-10 lg:px-14">
             <div className="mx-auto max-w-3xl text-center">
-              <div className="mb-6 inline-flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 inline-flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 Have a Question of Your Own?
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
               </div>
-              <h2 className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]">
+              <h2 className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl lg:text-[3.4rem]">
                 Most articles start with{" "}
-                <em className="font-light text-gold">a real question.</em>
+                <em className="text-gold font-light">a real question.</em>
               </h2>
-              <p className="mt-7 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+              <p className="text-muted-foreground mt-7 text-base leading-relaxed sm:text-[1.05rem]">
                 If something here sparks a question about your own retirement,
                 decumulation, or planning situation, that&apos;s the
                 conversation we should be having.
@@ -81,13 +77,13 @@ export default function ArticlesPage(): ReactNode {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <a
                   href="mailto:info@atlantisfinancial.ca"
-                  className="focus-ring inline-flex items-center bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+                  className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
                 >
                   Start a Conversation
                 </a>
                 <Link
                   href="/"
-                  className="focus-ring inline-flex items-center border border-border px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                  className="focus-ring border-border text-muted-foreground hover:border-gold hover:text-gold inline-flex items-center border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
                 >
                   Back to Home
                 </Link>

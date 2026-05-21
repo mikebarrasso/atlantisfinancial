@@ -94,7 +94,7 @@ const glyphs: { id: string; svg: ReactNode }[] = [
 
 function LogoChip({ children }: { children: ReactNode }): ReactNode {
   return (
-    <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-background text-foreground sm:h-24 sm:w-24">
+    <div className="bg-background text-foreground flex h-20 w-20 shrink-0 items-center justify-center rounded-full sm:h-24 sm:w-24">
       <div className="h-9 w-9 sm:h-10 sm:w-10">{children}</div>
     </div>
   );

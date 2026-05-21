@@ -239,7 +239,9 @@ export function DitherShader({
     ro.observe(container);
     resize();
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: true,
+    });
     container.addEventListener("pointerleave", handlePointerLeave);
 
     let frameId = 0;

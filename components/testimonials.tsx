@@ -148,7 +148,7 @@ export function Testimonials(): ReactNode {
   return (
     <section
       aria-labelledby={headingId}
-      className="relative border-b border-border p-6 sm:p-10 lg:p-14"
+      className="border-border relative border-b p-6 sm:p-10 lg:p-14"
     >
       <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-8">
         <div className="max-w-3xl">
@@ -161,7 +161,7 @@ export function Testimonials(): ReactNode {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={SWAP_TRANSITION}
-                className="text-3xl font-medium leading-[1.05] tracking-tighter text-foreground sm:text-4xl lg:text-[3.5rem]"
+                className="text-foreground text-3xl leading-[1.05] font-medium tracking-tighter sm:text-4xl lg:text-[3.5rem]"
               >
                 {active.title}
               </motion.h2>
@@ -175,7 +175,7 @@ export function Testimonials(): ReactNode {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ ...SWAP_TRANSITION, delay: 0.05 }}
-                className="text-sm leading-relaxed text-muted-foreground sm:text-base"
+                className="text-muted-foreground text-sm leading-relaxed sm:text-base"
               >
                 {active.subtitle}
               </motion.p>
@@ -184,7 +184,7 @@ export function Testimonials(): ReactNode {
           <div className="mt-10">
             <a
               href="#templates"
-              className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-5 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.12em] text-foreground transition-colors hover:bg-muted"
+              className="focus-ring border-border text-foreground hover:bg-muted inline-flex items-center gap-2 rounded-full border px-5 py-3.5 font-mono text-xs font-medium tracking-[0.12em] uppercase transition-colors"
             >
               See the templates
               <span aria-hidden="true">→</span>
@@ -286,14 +286,14 @@ function CarouselControls({
         type="button"
         onClick={() => onAdvance(-1)}
         aria-label="Previous testimonial"
-        className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-foreground transition-opacity hover:opacity-80"
+        className="focus-ring bg-muted text-foreground inline-flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
       >
         <ChevronLeft className="h-4 w-4" />
       </button>
       <div
         role="tablist"
         aria-label="Testimonial progress"
-        className="flex h-8 items-center gap-2 rounded-full bg-muted px-4"
+        className="bg-muted flex h-8 items-center gap-2 rounded-full px-4"
       >
         {Array.from({ length: count }).map((_, i) => (
           <button
@@ -305,8 +305,8 @@ function CarouselControls({
             onClick={() => onSelect(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === activeIndex
-                ? "w-6 bg-foreground"
-                : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
+                ? "bg-foreground w-6"
+                : "bg-muted-foreground/40 hover:bg-muted-foreground/70 w-1.5"
             }`}
           />
         ))}
@@ -315,7 +315,7 @@ function CarouselControls({
         type="button"
         onClick={() => onAdvance(1)}
         aria-label="Next testimonial"
-        className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-foreground transition-opacity hover:opacity-80"
+        className="focus-ring bg-muted text-foreground inline-flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-80"
       >
         <ChevronRight className="h-4 w-4" />
       </button>
@@ -348,16 +348,16 @@ function TestimonialCard({
       className={`focus-ring relative flex min-h-50 w-full flex-col justify-between rounded-2xl p-6 text-left ring-1 transition-colors duration-300 sm:p-7 ${
         active
           ? "bg-card ring-border"
-          : "bg-muted ring-transparent hover:bg-muted/70"
+          : "bg-muted hover:bg-muted/70 ring-transparent"
       } ${interactive ? "cursor-pointer" : "cursor-default"}`}
       aria-pressed={interactive ? active : undefined}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
+          <p className="text-foreground text-base font-semibold tracking-tight sm:text-lg">
             {name}
           </p>
-          <p className="mt-1 max-w-[20ch] text-xs leading-relaxed text-muted-foreground sm:text-sm">
+          <p className="text-muted-foreground mt-1 max-w-[20ch] text-xs leading-relaxed sm:text-sm">
             {role}
           </p>
         </div>
@@ -377,7 +377,7 @@ function TestimonialCard({
         </div>
       </div>
 
-      <p className="mt-10 text-xs font-medium tracking-wide text-muted-foreground sm:text-sm">
+      <p className="text-muted-foreground mt-10 text-xs font-medium tracking-wide sm:text-sm">
         {topic}
       </p>
     </Component>

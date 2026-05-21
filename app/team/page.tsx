@@ -17,53 +17,38 @@ export const metadata: Metadata = createMetadata({
 });
 
 function MemberCard({ member }: { member: TeamMember }): ReactNode {
-  const hasPhoto = member.slug !== "mitchell";
-  const snippet = member.profile?.professional[0]?.split(". ").slice(0, 2).join(". ");
+  const snippet = member.profile?.professional[0]
+    ?.split(". ")
+    .slice(0, 2)
+    .join(". ");
 
   return (
     <Link
       href={`/team/${member.slug}`}
-      className="focus-ring group flex gap-6 border border-border bg-background p-5 transition-all hover:border-gold hover:bg-gold/[0.02] sm:p-6"
+      className="focus-ring group border-border bg-background hover:border-gold hover:bg-gold/[0.02] flex gap-6 border p-5 transition-all sm:p-6"
     >
-      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-gold/20 bg-muted transition-colors group-hover:border-gold sm:h-28 sm:w-28">
-        {hasPhoto ? (
-          <Image
-            src={member.photo}
-            alt={member.name}
-            fill
-            sizes="(max-width: 640px) 96px, 112px"
-            className="object-cover"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#B8C2D4"
-              strokeWidth="1"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-            </svg>
-          </div>
-        )}
+      <div className="border-gold/20 bg-muted group-hover:border-gold relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 transition-colors sm:h-28 sm:w-28">
+        <Image
+          src={member.photo}
+          alt={member.name}
+          fill
+          sizes="(max-width: 640px) 96px, 112px"
+          className="object-cover"
+        />
       </div>
       <div className="flex-1">
-        <h3 className="font-serif text-xl font-light leading-tight tracking-tight text-foreground">
+        <h3 className="text-foreground font-serif text-xl leading-tight font-light tracking-tight">
           {member.name}
         </h3>
-        <p className="mt-1 text-[10px] uppercase tracking-[0.1em] text-gold">
+        <p className="text-gold mt-1 text-[10px] tracking-[0.1em] uppercase">
           {member.role}
         </p>
         {snippet && (
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+          <p className="text-muted-foreground mt-3 line-clamp-2 text-sm leading-relaxed">
             {snippet}.
           </p>
         )}
-        <span className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-gold transition-transform group-hover:translate-x-1">
+        <span className="text-gold mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium tracking-[0.1em] uppercase transition-transform group-hover:translate-x-1">
           Read full profile <span aria-hidden="true">→</span>
         </span>
       </div>
@@ -77,24 +62,23 @@ export default function TeamIndexPage(): ReactNode {
       <Header />
       <main id="main-content" className="flex-1">
         {/* ── HERO ──────────────────────────────────────────── */}
-        <section className="relative border-b border-border">
+        <section className="border-border relative border-b">
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]">
-            <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:border-r lg:border-border lg:px-14 lg:py-24">
-              <div className="enter mb-7 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+            <div className="lg:border-border flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:border-r lg:px-14 lg:py-24">
+              <div className="enter text-gold mb-7 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 The Team
               </div>
-              <h1 className="enter font-serif text-5xl font-light leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-[5rem]">
+              <h1 className="enter text-foreground font-serif text-5xl leading-[0.95] font-light tracking-tight sm:text-6xl lg:text-[5rem]">
                 The people behind{" "}
-                <em className="font-light text-gold">the process.</em>
+                <em className="text-gold font-light">the process.</em>
               </h1>
-              <p className="enter mt-7 max-w-xl font-serif text-lg italic leading-snug text-muted-foreground sm:text-xl">
+              <p className="enter text-muted-foreground mt-7 max-w-xl font-serif text-lg leading-snug italic sm:text-xl">
                 Atlantis Financial is a small firm. Every client knows every
-                person who works on their file, by name, by role, by what
-                they actually do for you.
+                person who works on their file, by name, by role, by what they
+                actually do for you.
               </p>
             </div>
-            <div className="relative min-h-80 overflow-hidden bg-muted lg:min-h-160">
+            <div className="bg-muted relative min-h-80 overflow-hidden lg:min-h-160">
               <Image
                 src="/images/team-photos/team-studio.jpg"
                 alt="The Atlantis Financial team"
@@ -110,16 +94,15 @@ export default function TeamIndexPage(): ReactNode {
 
         {/* ── HOW WE WORK ───────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border bg-muted/30 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border bg-muted/30 relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-3xl">
-              <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 How We Work Together
               </div>
-              <h2 className="font-serif text-3xl font-light leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-[2.6rem]">
+              <h2 className="text-foreground font-serif text-3xl leading-[1.15] font-light tracking-tight sm:text-4xl lg:text-[2.6rem]">
                 A small firm by design.
               </h2>
-              <div className="mt-7 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+              <div className="text-muted-foreground mt-7 space-y-5 text-base leading-relaxed sm:text-[1.05rem]">
                 <p>
                   We are seven people. We could be more. We choose not to be.
                   Every client engagement touches every team member at some
@@ -130,12 +113,12 @@ export default function TeamIndexPage(): ReactNode {
                   honestly claim.
                 </p>
                 <p>
-                  When you call, you get someone who knows your file. When
-                  you book a meeting, you meet with the advisor who built
-                  your plan, not a junior associate three rotations removed
-                  from the original conversation. This isn&apos;t because
-                  we&apos;re old-fashioned. It&apos;s because we don&apos;t
-                  know how else to do the work well.
+                  When you call, you get someone who knows your file. When you
+                  book a meeting, you meet with the advisor who built your plan,
+                  not a junior associate three rotations removed from the
+                  original conversation. This isn&apos;t because we&apos;re
+                  old-fashioned. It&apos;s because we don&apos;t know how else
+                  to do the work well.
                 </p>
               </div>
             </div>
@@ -144,13 +127,12 @@ export default function TeamIndexPage(): ReactNode {
 
         {/* ── ADVISORS ──────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-3 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-3 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 Advisors
               </div>
-              <h2 className="font-serif text-3xl font-light tracking-tight text-foreground sm:text-4xl">
+              <h2 className="text-foreground font-serif text-3xl font-light tracking-tight sm:text-4xl">
                 The people who build your plan.
               </h2>
               <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -164,20 +146,19 @@ export default function TeamIndexPage(): ReactNode {
 
         {/* ── CLIENT SERVICES ───────────────────────────────── */}
         <Reveal>
-          <section className="relative border-b border-border bg-muted/30 px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+          <section className="border-border bg-muted/30 relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
             <div className="mx-auto max-w-5xl">
-              <div className="mb-3 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-                <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+              <div className="text-gold mb-3 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
                 Client Services
               </div>
-              <h2 className="font-serif text-3xl font-light tracking-tight text-foreground sm:text-4xl">
+              <h2 className="text-foreground font-serif text-3xl font-light tracking-tight sm:text-4xl">
                 The people who keep things on track.
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Most planning is between meetings. Client services is the
-                steady cadence of follow-up, paperwork, scheduling, and
-                quiet attention to detail that turns a plan into a
-                relationship that actually holds together over years.
+              <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed">
+                Most planning is between meetings. Client services is the steady
+                cadence of follow-up, paperwork, scheduling, and quiet attention
+                to detail that turns a plan into a relationship that actually
+                holds together over years.
               </p>
               <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
                 {teamByGroup["client-services"].map((m) => (
@@ -188,61 +169,30 @@ export default function TeamIndexPage(): ReactNode {
           </section>
         </Reveal>
 
-        {/* ── SPECIALIST PARTNERS ───────────────────────────── */}
-        <Reveal>
-          <section className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
-            <div className="mx-auto max-w-5xl">
-              <div className="mb-3 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-silver-light">
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-px w-5 bg-silver-light/50"
-                />
-                Specialist Partners
-              </div>
-              <h2 className="font-serif text-3xl font-light tracking-tight text-foreground sm:text-4xl">
-                The people we bring in when your situation needs them.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                Some questions, corporate structure, complex estate
-                planning, intergenerational transfers, advanced
-                insurance-based strategies, call for a level of specialist
-                expertise that no single advisor can credibly hold. When
-                they come up, we bring in partners who&apos;ve spent a
-                career on that one thing.
-              </p>
-              <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-                {teamByGroup.specialists.map((m) => (
-                  <MemberCard key={m.slug} member={m} />
-                ))}
-              </div>
-            </div>
-          </section>
-        </Reveal>
-
         {/* ── CTA ──────────────────────────────────────────── */}
         <Reveal>
-          <section className="relative border-t-[3px] border-gold bg-muted/30 px-6 py-16 sm:px-10 lg:px-14">
+          <section className="border-gold bg-muted/30 relative border-t-[3px] px-6 py-16 sm:px-10 lg:px-14">
             <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-6">
               <div>
-                <h2 className="font-serif text-3xl font-light leading-tight tracking-tight text-foreground sm:text-4xl">
+                <h2 className="text-foreground font-serif text-3xl leading-tight font-light tracking-tight sm:text-4xl">
                   Want to meet{" "}
-                  <em className="font-light text-gold">the team?</em>
+                  <em className="text-gold font-light">the team?</em>
                 </h2>
-                <p className="mt-2 font-serif text-sm italic text-muted-foreground">
-                  The first conversation is with Allan. Everything else
-                  starts from there.
+                <p className="text-muted-foreground mt-2 font-serif text-sm italic">
+                  The first conversation is with Allan. Everything else starts
+                  from there.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:info@atlantisfinancial.ca"
-                  className="focus-ring inline-flex items-center bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+                  className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
                 >
                   Start a Conversation
                 </a>
                 <Link
                   href="/"
-                  className="focus-ring inline-flex items-center border border-border px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+                  className="focus-ring border-border text-muted-foreground hover:border-gold hover:text-gold inline-flex items-center border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
                 >
                   Back to Home
                 </Link>

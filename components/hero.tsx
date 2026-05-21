@@ -10,44 +10,32 @@ export function Hero(): ReactNode {
   };
 
   return (
-    <section className="relative border-b border-border">
+    <section className="border-border relative border-b">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Left column ─ copy + CTAs */}
-        <div className="flex min-h-130 flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:min-h-160 lg:border-r lg:border-border lg:px-14 lg:py-24">
-          <div
-            style={{ ["--enter-delay" as string]: "260ms" }}
-            className="enter mb-7 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold"
-          >
-            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
-            Scenario-Based Financial Planning
-          </div>
-
+        {/* Left column - copy + CTAs */}
+        <div className="lg:border-border flex min-h-130 flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:min-h-160 lg:border-r lg:px-14 lg:py-24">
           <h1
             style={{ ["--enter-delay" as string]: "380ms" }}
-            className="enter font-serif text-5xl font-light leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[6.5rem] xl:text-[8rem]"
+            className="enter text-foreground font-serif text-4xl leading-[1.02] font-light tracking-tight sm:text-6xl lg:text-[4.6rem] xl:text-[5.4rem]"
           >
-            The
-            <br />
-            <em className="font-light text-gold">Missing</em>
-            <br />
-            <span className="ml-12 inline-block sm:ml-20 lg:ml-28">
-              Piece.
-            </span>
+            Know exactly what your{" "}
+            <em className="text-gold font-light">retirement</em> can look like.
           </h1>
 
           <p
             style={{ ["--enter-delay" as string]: "540ms" }}
-            className="enter mt-8 font-serif text-xl italic text-gold/75 sm:text-2xl"
+            className="enter text-gold/75 mt-7 font-serif text-xl italic sm:text-2xl"
           >
-            Discover what is possible.
+            Scenario-based financial planning.
           </p>
 
           <p
             style={{ ["--enter-delay" as string]: "640ms" }}
-            className="enter mt-3 max-w-md font-serif text-base italic leading-relaxed text-muted-foreground sm:text-lg"
+            className="enter text-muted-foreground mt-3 max-w-md text-base leading-relaxed sm:text-lg"
           >
-            Where money and life collide, and you finally see what&apos;s
-            possible.
+            We model your real options together, live, until the path is clear —
+            for Canadians at or near retirement, with decisions that can&apos;t
+            be undone.
           </p>
 
           <div
@@ -56,24 +44,24 @@ export function Hero(): ReactNode {
           >
             <a
               href="#cta"
-              className="focus-ring inline-flex items-center gap-2 bg-gold px-7 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-navy-deep transition-colors hover:bg-gold-light"
+              className="focus-ring bg-gold text-navy-deep hover:bg-gold-light inline-flex items-center gap-2 px-7 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-colors"
             >
               Start a Conversation
             </a>
             <button
               type="button"
               onClick={openQuiz}
-              className="focus-ring inline-flex items-center gap-2 border border-border px-7 py-4 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+              className="focus-ring border-border text-muted-foreground hover:border-gold hover:text-gold inline-flex items-center gap-2 border px-7 py-4 text-xs font-medium tracking-[0.12em] uppercase transition-colors"
             >
               Take the 10-Question Quiz
             </button>
           </div>
         </div>
 
-        {/* Right column ─ AI hero video (poster fallback) */}
+        {/* Right column - AI hero video (poster fallback) */}
         <div
           style={{ ["--enter-delay" as string]: "200ms" }}
-          className="enter-fade relative min-h-80 overflow-hidden bg-muted lg:min-h-160"
+          className="enter-fade bg-muted relative min-h-80 overflow-hidden lg:min-h-160"
         >
           <video
             autoPlay
@@ -88,17 +76,17 @@ export function Hero(): ReactNode {
           </video>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background/70 to-transparent lg:w-32"
+            className="from-background/70 pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r to-transparent lg:w-32"
           />
         </div>
       </div>
 
-      {/* As-seen-in marquee — infinite scroll, theme-aware brand colors */}
+      {/* As-seen-in marquee, infinite scroll, theme-aware brand colors */}
       <div
         style={{ ["--enter-delay" as string]: "920ms" }}
-        className="enter flex flex-col items-center gap-4 border-t border-border bg-muted/20 py-6"
+        className="enter border-border bg-muted/20 flex flex-col items-center gap-4 border-t py-6"
       >
-        <span className="px-6 text-[10px] font-medium uppercase tracking-[0.2em] text-gold/80">
+        <span className="text-gold/80 px-6 text-[10px] font-medium tracking-[0.2em] uppercase">
           As seen in
         </span>
         <PublicationsMarquee />

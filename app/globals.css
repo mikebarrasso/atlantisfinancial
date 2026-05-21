@@ -12,25 +12,25 @@
 
 :root {
   /* Light theme (alt) */
-  --background: #FDFAF5;        /* white-cream */
-  --foreground: #1B3060;        /* navy text */
-  --muted: #F4EFE4;             /* cream surface */
-  --muted-foreground: #1E3570;  /* navy-mid */
-  --border: rgba(27,48,96,0.18);
-  --ring: #C9A86C;              /* gold focus */
-  --card: #F4EFE4;
-  --card-foreground: #1B3060;
+  --background: #fdfaf5; /* white-cream */
+  --foreground: #1b3060; /* navy text */
+  --muted: #f4efe4; /* cream surface */
+  --muted-foreground: #1e3570; /* navy-mid */
+  --border: rgba(27, 48, 96, 0.18);
+  --ring: #c9a86c; /* gold focus */
+  --card: #f4efe4;
+  --card-foreground: #1b3060;
 
   /* Brand tokens — same in both themes */
-  --navy: #1B3060;
-  --navy-deep: #0F1E3A;
-  --navy-mid: #1E3570;
-  --gold: #C9A86C;
-  --gold-light: #E2C993;
-  --silver: #8C9BB5;
-  --silver-light: #B8C2D4;
-  --cream: #F4EFE4;
-  --cream-dim: #C8BFA8;
+  --navy: #1b3060;
+  --navy-deep: #0f1e3a;
+  --navy-mid: #1e3570;
+  --gold: #c9a86c;
+  --gold-light: #e2c993;
+  --silver: #8c9bb5;
+  --silver-light: #b8c2d4;
+  --cream: #f4efe4;
+  --cream-dim: #c8bfa8;
 
   --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
@@ -38,14 +38,14 @@
 
 .dark {
   /* Dark theme (default) */
-  --background: #0F1E3A;        /* navy-deep */
-  --foreground: #F4EFE4;        /* cream text */
-  --muted: #1B3060;             /* navy surface */
-  --muted-foreground: #C8BFA8;  /* cream-dim */
-  --border: rgba(201,168,108,0.22);
-  --ring: #C9A86C;
-  --card: #1B3060;
-  --card-foreground: #F4EFE4;
+  --background: #0f1e3a; /* navy-deep */
+  --foreground: #f4efe4; /* cream text */
+  --muted: #1b3060; /* navy surface */
+  --muted-foreground: #c8bfa8; /* cream-dim */
+  --border: rgba(201, 168, 108, 0.22);
+  --ring: #c9a86c;
+  --card: #1b3060;
+  --card-foreground: #f4efe4;
 }
 
 @theme inline {
@@ -139,26 +139,30 @@ body.nav-open [data-section-corner] {
 @keyframes enter-up {
   from {
     opacity: 0;
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(0, 18px, 0) scale(0.992);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
 @keyframes enter-fade {
   from {
     opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.995);
   }
   to {
     opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 .enter {
   opacity: 0;
-  animation: enter-up 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: enter-up 820ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--enter-delay, 0ms);
 }
 
@@ -166,6 +170,25 @@ body.nav-open [data-section-corner] {
   opacity: 0;
   animation: enter-fade 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: var(--enter-delay, 0ms);
+}
+
+/* Soft hover lift for cards and interactive panels */
+.motion-lift {
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-lift:hover {
+  transform: translate3d(0, -3px, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-lift:hover {
+    transform: none;
+  }
 }
 
 /* Vertical marquee. Consumers duplicate content; -50% lands the duplicate

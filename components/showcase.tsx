@@ -12,7 +12,14 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
-import { useCallback, useEffect, useId, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { SectionCorners } from "@/components/section-corners";
 
 const MORPH_TRANSITION: Transition = {
@@ -128,18 +135,20 @@ export function Showcase(): ReactNode {
     track.scrollBy({ left: direction * (cardWidth + gap), behavior: "smooth" });
   }, []);
 
-  const activeCard = activeId ? CARDS.find((c) => c.id === activeId) ?? null : null;
+  const activeCard = activeId
+    ? (CARDS.find((c) => c.id === activeId) ?? null)
+    : null;
 
   return (
     <section
       aria-labelledby={headingId}
-      className="relative border-b border-border"
+      className="border-border relative border-b"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:border-r lg:border-border lg:px-14 lg:py-24">
+        <div className="lg:border-border flex flex-col justify-center px-6 py-16 sm:px-10 sm:py-20 lg:border-r lg:px-14 lg:py-24">
           <h2
             id={headingId}
-            className="text-4xl font-medium leading-[1.05] tracking-tighter text-foreground sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]"
+            className="text-foreground text-4xl leading-[1.05] font-medium tracking-tighter sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]"
           >
             Built lean,
             <br />
@@ -147,14 +156,14 @@ export function Showcase(): ReactNode {
             <br />
             <span className="text-muted-foreground">ready for your brand</span>
           </h2>
-          <p className="mt-10 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Each surface is intentionally generic so your brand drops in
-            without resistance.
+          <p className="text-muted-foreground mt-10 max-w-md text-sm leading-relaxed sm:text-base">
+            Each surface is intentionally generic so your brand drops in without
+            resistance.
           </p>
           <div className="mt-10">
             <a
               href="#offerings"
-              className="focus-ring inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-background transition-opacity hover:opacity-90"
+              className="focus-ring bg-foreground text-background inline-flex items-center gap-2 rounded-full px-5 py-4 text-xs font-semibold tracking-[0.12em] uppercase transition-opacity hover:opacity-90"
             >
               See Our Designs
               <span aria-hidden="true">→</span>
@@ -165,7 +174,7 @@ export function Showcase(): ReactNode {
         <div className="relative flex flex-col overflow-hidden">
           <div
             ref={trackRef}
-            className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-6 py-16 sm:gap-6 sm:px-10 sm:py-20 lg:px-14 lg:py-24 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-smooth px-6 py-16 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 sm:px-10 sm:py-20 lg:px-14 lg:py-24 [&::-webkit-scrollbar]:hidden"
           >
             {CARDS.map((card) => (
               <Card
@@ -175,7 +184,10 @@ export function Showcase(): ReactNode {
                 onClick={() => setActiveId(card.id)}
               />
             ))}
-            <div aria-hidden="true" className="shrink-0 basis-6 sm:basis-10 lg:basis-14" />
+            <div
+              aria-hidden="true"
+              className="shrink-0 basis-6 sm:basis-10 lg:basis-14"
+            />
           </div>
 
           <div className="flex items-center justify-center gap-2 px-6 pb-10 sm:px-10 sm:pb-12 lg:px-14 lg:pb-14">
@@ -184,14 +196,14 @@ export function Showcase(): ReactNode {
               onClick={() => scrollByCards(-1)}
               disabled={page === 0}
               aria-label="Previous card"
-              className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-foreground transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-30"
+              className="focus-ring bg-muted text-foreground inline-flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div
               role="tablist"
               aria-label="Card progress"
-              className="flex h-8 items-center gap-2 rounded-full bg-muted px-4"
+              className="bg-muted flex h-8 items-center gap-2 rounded-full px-4"
             >
               {Array.from({ length: pageCount }).map((_, i) => (
                 <span
@@ -199,7 +211,9 @@ export function Showcase(): ReactNode {
                   role="tab"
                   aria-selected={i === page}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === page ? "w-6 bg-foreground" : "w-1.5 bg-muted-foreground/40"
+                    i === page
+                      ? "bg-foreground w-6"
+                      : "bg-muted-foreground/40 w-1.5"
                   }`}
                 />
               ))}
@@ -209,7 +223,7 @@ export function Showcase(): ReactNode {
               onClick={() => scrollByCards(1)}
               disabled={page >= pageCount - 1}
               aria-label="Next card"
-              className="focus-ring inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-foreground transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-30"
+              className="focus-ring bg-muted text-foreground inline-flex h-8 w-8 items-center justify-center rounded-full transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-30"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -249,12 +263,12 @@ function Card({
       layoutId={`card-${card.id}`}
       transition={MORPH_TRANSITION}
       style={{ visibility: hidden ? "hidden" : "visible" }}
-      className="focus-ring group relative flex aspect-[3/4] w-[280px] shrink-0 cursor-pointer snap-center flex-col justify-between rounded-2xl bg-muted p-6 text-left sm:w-[320px] sm:p-7 lg:w-[360px] lg:p-8"
+      className="focus-ring group bg-muted relative flex aspect-[3/4] w-[280px] shrink-0 cursor-pointer snap-center flex-col justify-between rounded-2xl p-6 text-left sm:w-[320px] sm:p-7 lg:w-[360px] lg:p-8"
     >
       <motion.div
         layoutId={`card-icon-${card.id}`}
         transition={MORPH_TRANSITION}
-        className="flex h-11 w-11 items-center justify-center rounded-full bg-background/60 text-foreground"
+        className="bg-background/60 text-foreground flex h-11 w-11 items-center justify-center rounded-full"
       >
         <Icon className="h-4 w-4" strokeWidth={1.5} />
       </motion.div>
@@ -262,7 +276,7 @@ function Card({
         <motion.h3
           layoutId={`card-title-${card.id}`}
           transition={MORPH_TRANSITION}
-          className="whitespace-pre-line text-xl font-medium leading-tight tracking-tight text-foreground sm:text-2xl"
+          className="text-foreground text-xl leading-tight font-medium tracking-tight whitespace-pre-line sm:text-2xl"
         >
           {card.title}
         </motion.h3>
@@ -270,7 +284,7 @@ function Card({
           layoutId={`card-plus-${card.id}`}
           aria-hidden="true"
           transition={MORPH_TRANSITION}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/60 text-foreground"
+          className="bg-background/60 text-foreground inline-flex h-9 w-9 items-center justify-center rounded-full"
         >
           <motion.span
             className="inline-flex"
@@ -303,18 +317,18 @@ function ExpandedCard({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 cursor-default bg-background/60 backdrop-blur-xl"
+        className="bg-background/60 absolute inset-0 cursor-default backdrop-blur-xl"
       />
 
       <motion.div
         layoutId={`card-${card.id}`}
         transition={MORPH_TRANSITION}
-        className="relative z-10 flex aspect-[3/4] w-full max-w-[420px] flex-col justify-between rounded-2xl bg-muted p-8 sm:aspect-auto sm:max-w-2xl sm:p-10 lg:p-12"
+        className="bg-muted relative z-10 flex aspect-[3/4] w-full max-w-[420px] flex-col justify-between rounded-2xl p-8 sm:aspect-auto sm:max-w-2xl sm:p-10 lg:p-12"
       >
         <motion.div
           layoutId={`card-icon-${card.id}`}
           transition={MORPH_TRANSITION}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-background/60 text-foreground"
+          className="bg-background/60 text-foreground flex h-11 w-11 items-center justify-center rounded-full"
         >
           <Icon className="h-4 w-4" strokeWidth={1.5} />
         </motion.div>
@@ -323,7 +337,7 @@ function ExpandedCard({
           <motion.h3
             layoutId={`card-title-${card.id}`}
             transition={MORPH_TRANSITION}
-            className="whitespace-pre-line text-2xl font-medium leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl"
+            className="text-foreground text-2xl leading-tight font-medium tracking-tight whitespace-pre-line sm:text-3xl lg:text-4xl"
           >
             {card.title}
           </motion.h3>
@@ -331,8 +345,12 @@ function ExpandedCard({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.35, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-prose text-sm leading-relaxed text-muted-foreground sm:text-base"
+            transition={{
+              duration: 0.35,
+              delay: 0.18,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="text-muted-foreground max-w-prose text-sm leading-relaxed sm:text-base"
           >
             {card.body}
           </motion.p>
@@ -342,7 +360,7 @@ function ExpandedCard({
             layoutId={`card-plus-${card.id}`}
             transition={MORPH_TRANSITION}
             aria-label="Close card"
-            className="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-background/60 text-foreground transition-opacity hover:opacity-80"
+            className="focus-ring bg-background/60 text-foreground inline-flex h-9 w-9 items-center justify-center rounded-full transition-opacity hover:opacity-80"
           >
             <motion.span
               className="inline-flex"

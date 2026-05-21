@@ -44,11 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${cormorant.variable} ${dmSans.variable} min-h-screen bg-background font-sans font-light text-foreground antialiased`}
+        className={`${cormorant.variable} ${dmSans.variable} bg-background text-foreground min-h-screen font-sans font-light antialiased`}
       >
         <Providers>
           <SkipToContent />
-          <div className="mx-auto flex min-h-screen w-[calc(100%-1.5rem)] max-w-[1440px] flex-col border-x border-border sm:w-[calc(100%-2.5rem)] lg:w-[calc(100%-3rem)]">
+          <div className="border-border mx-auto flex min-h-screen w-[calc(100%-1.5rem)] max-w-[1440px] flex-col border-x sm:w-[calc(100%-2.5rem)] lg:w-[calc(100%-3rem)]">
             {children}
           </div>
           <ThemeSwitch />

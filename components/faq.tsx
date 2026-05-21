@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { AnimatePresence, motion, type Transition } from "motion/react";
 import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
@@ -92,45 +93,46 @@ export function Faq(): ReactNode {
     <section
       id="faq"
       aria-labelledby={headingId}
-      className="relative border-b border-border px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24"
+      className="border-border relative border-b px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24"
     >
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <div className="mb-6 flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold">
-            <span aria-hidden="true" className="inline-block h-px w-5 bg-gold" />
+          <div className="text-gold mb-6 flex items-center gap-2.5 text-[10px] font-medium tracking-[0.2em] uppercase">
             Common Questions
           </div>
           <h2
             id={headingId}
-            className="font-serif text-4xl font-light leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]"
+            className="text-foreground font-serif text-4xl leading-[1.05] font-light tracking-tight sm:text-5xl lg:text-[3.4rem]"
           >
             Questions you might{" "}
-            <em className="font-light text-gold">actually</em> have.
+            <em className="text-gold font-light">actually</em> have.
           </h2>
-          <p className="mt-5 max-w-md font-serif text-base italic leading-relaxed text-muted-foreground sm:text-[1.05rem]">
+          <p className="text-muted-foreground mt-5 max-w-md font-serif text-base leading-relaxed italic sm:text-[1.05rem]">
             These are the questions people actually bring to a first
             conversation. You&apos;re probably wondering some of them too.
           </p>
           <Link
             href="/faq"
-            className="focus-ring mt-8 inline-flex items-center gap-2 border-b border-gold pb-1 text-xs font-medium uppercase tracking-[0.1em] text-foreground transition-all hover:text-gold"
+            className="focus-ring border-gold text-foreground hover:text-gold mt-8 inline-flex items-center gap-2 border-b pb-1 text-xs font-medium tracking-[0.1em] uppercase transition-all"
           >
             See all 25+ questions
             <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <div className="border-t border-border">
-        <ul className="divide-y divide-border">
-          {FAQS.map((faq, i) => (
-            <FaqRow
-              key={faq.q}
-              faq={faq}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex((prev) => (prev === i ? -1 : i))}
-            />
-          ))}
-        </ul>
-        </div>
+        <Reveal>
+          <div className="border-border border-t">
+            <ul className="divide-border divide-y">
+              {FAQS.map((faq, i) => (
+                <FaqRow
+                  key={faq.q}
+                  faq={faq}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex((prev) => (prev === i ? -1 : i))}
+                />
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
       <SectionCorners />
     </section>
@@ -159,7 +161,7 @@ function FaqRow({
         aria-controls={panelId}
         className="focus-ring flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left sm:py-7"
       >
-        <span className="text-base font-medium leading-snug tracking-tight text-foreground sm:text-lg">
+        <span className="text-foreground text-base leading-snug font-medium tracking-tight sm:text-lg">
           {faq.q}
         </span>
 
@@ -171,15 +173,15 @@ function FaqRow({
           aria-hidden="true"
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={CHEVRON_TRANSITION}
-          className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center text-foreground"
+          className="text-foreground relative inline-flex h-9 w-9 shrink-0 items-center justify-center"
         >
           <motion.span
-            className="absolute inset-0 rounded-full bg-muted"
+            className="bg-muted absolute inset-0 rounded-full"
             animate={{ opacity: isOpen ? 0 : 1 }}
             transition={CHEVRON_TRANSITION}
           />
           <motion.span
-            className="absolute inset-0 rounded-full border border-border"
+            className="border-border absolute inset-0 rounded-full border"
             animate={{ opacity: isOpen ? 1 : 0 }}
             transition={CHEVRON_TRANSITION}
           />
@@ -205,7 +207,7 @@ function FaqRow({
               animate={{ y: 0 }}
               exit={{ y: -6 }}
               transition={PANEL_TRANSITION}
-              className="max-w-3xl space-y-4 pb-7 pr-12 text-sm leading-relaxed text-muted-foreground sm:text-base"
+              className="text-muted-foreground max-w-3xl space-y-4 pr-12 pb-7 text-sm leading-relaxed sm:text-base"
             >
               {faq.a.map((para, i) => (
                 <p key={i}>{para}</p>

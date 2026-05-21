@@ -21,22 +21,22 @@ export function QACarousel({ items }: { items: ReadonlyArray<QA> }): ReactNode {
           onClick={prev}
           disabled={idx === 0}
           aria-label="Previous question"
-          className="focus-ring flex w-12 shrink-0 items-center justify-center border border-r-0 border-border bg-background text-foreground transition-colors hover:bg-navy hover:text-cream disabled:cursor-not-allowed disabled:opacity-20 disabled:hover:bg-background disabled:hover:text-foreground"
+          className="focus-ring border-border bg-background text-foreground hover:bg-navy hover:text-cream disabled:hover:bg-background disabled:hover:text-foreground flex w-12 shrink-0 items-center justify-center border border-r-0 transition-colors disabled:cursor-not-allowed disabled:opacity-20"
         >
           <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
         </button>
 
-        <div className="flex min-h-[220px] flex-1 flex-col justify-between border border-border bg-background p-8 sm:p-10">
+        <div className="border-border bg-background flex min-h-[220px] flex-1 flex-col justify-between border p-8 sm:p-10">
           <div>
-            <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.18em] text-gold opacity-80">
+            <p className="text-gold mb-3 text-[10px] font-medium tracking-[0.18em] uppercase opacity-80">
               {cur.q}
             </p>
-            <p className="font-serif text-2xl font-light leading-snug text-foreground sm:text-3xl">
+            <p className="text-foreground font-serif text-2xl leading-snug font-light sm:text-3xl">
               {cur.a}
             </p>
           </div>
-          <div className="mt-7 flex items-center justify-between border-t border-border pt-4">
-            <span className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+          <div className="border-border mt-7 flex items-center justify-between border-t pt-4">
+            <span className="text-muted-foreground text-[11px] tracking-[0.12em] uppercase">
               {idx + 1} / {items.length}
             </span>
             <div className="flex gap-1.5" role="tablist">
@@ -62,7 +62,7 @@ export function QACarousel({ items }: { items: ReadonlyArray<QA> }): ReactNode {
           onClick={next}
           disabled={idx === items.length - 1}
           aria-label="Next question"
-          className="focus-ring flex w-12 shrink-0 items-center justify-center border border-l-0 border-border bg-background text-foreground transition-colors hover:bg-navy hover:text-cream disabled:cursor-not-allowed disabled:opacity-20 disabled:hover:bg-background disabled:hover:text-foreground"
+          className="focus-ring border-border bg-background text-foreground hover:bg-navy hover:text-cream disabled:hover:bg-background disabled:hover:text-foreground flex w-12 shrink-0 items-center justify-center border border-l-0 transition-colors disabled:cursor-not-allowed disabled:opacity-20"
         >
           <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
         </button>

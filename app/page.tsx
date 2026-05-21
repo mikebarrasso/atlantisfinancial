@@ -5,14 +5,23 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { IdealClient } from "@/components/ideal-client";
+import { Plan } from "@/components/plan";
 import { Process } from "@/components/process";
 import { QuizModal } from "@/components/quiz-modal";
 import { QuoteBand } from "@/components/quote-band";
 import { Reveal } from "@/components/reveal";
+import { Stakes } from "@/components/stakes";
 import { TeamGrid } from "@/components/team-grid";
 import { WhatIf } from "@/components/what-if";
 import type { ReactNode } from "react";
 
+/**
+ * Homepage section order follows the StoryBrand SB7 flow:
+ *   Hero (one-liner) → Stakes (failure) → Is This You (empathy) →
+ *   Plan (how to start) → What If/Quiz (differentiator) →
+ *   Process (methodology) → Quote (philosophical) → Stories (success) →
+ *   Team (guide authority) → FAQ (objections) → Final CTA (repeat).
+ */
 export default function HomePage(): ReactNode {
   return (
     <>
@@ -21,7 +30,15 @@ export default function HomePage(): ReactNode {
         <Hero />
 
         <Reveal>
+          <Stakes />
+        </Reveal>
+
+        <Reveal>
           <IdealClient />
+        </Reveal>
+
+        <Reveal>
+          <Plan />
         </Reveal>
 
         <Reveal>
@@ -29,11 +46,11 @@ export default function HomePage(): ReactNode {
         </Reveal>
 
         <Reveal>
-          <QuoteBand />
+          <Process />
         </Reveal>
 
         <Reveal>
-          <Process />
+          <QuoteBand />
         </Reveal>
 
         <Reveal>
@@ -54,8 +71,7 @@ export default function HomePage(): ReactNode {
       </main>
       <Footer />
 
-      {/* Quiz modal, mounted globally so any "Take the Quiz" button on the page
-        can open it via `window.dispatchEvent(new Event("open-quiz"))`. */}
+      {/* Quiz modal, mounted globally so any "Take the Quiz" button opens it. */}
       <QuizModal />
     </>
   );
